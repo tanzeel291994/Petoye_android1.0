@@ -5,24 +5,37 @@ import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.facebook.FacebookSdk;
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginScreen extends Activity {
 
-    String email,password;
-
+    private String email,password;
+    GlobalClass globalVariable;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        globalVariable=(GlobalClass) getApplicationContext();
 
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_login_screen);
 
-        email=((EditText)findViewById(R.id.etLoginEmail)).getText().toString();
-        password=((EditText)findViewById(R.id.etLoginPassword)).getText().toString();
+       // email=((EditText)findViewById(R.id.etLoginEmail)).getText().toString();
+       // password=((EditText)findViewById(R.id.etLoginPassword)).getText().toString();
     }
 
     @Override
@@ -51,6 +64,46 @@ public class LoginScreen extends Activity {
     public void login(View view )
     {
         //authentication
+        String url = "http://api.petoye.com/users/login";
+       email=((EditText)findViewById(R.id.etLoginEmail)).getText().toString();
+        password=((EditText)findViewById(R.id.etLoginPassword)).getText().toString();
+        Map<String, String> jsonParams = new HashMap<String, String>();
+        jsonParams.put("session[email]",email);
+        jsonParams.put("session[password]",password);
+        Log.i("TAG",password);
+        Log.i("TAG",email);
+        JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.POST, url,new JSONObject(jsonParams),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        //store the user id in global variable
+                        //Log.i("TAG", response.toString());
+                        globalVariable.setUid(response.toString());
+                        Log.i("TAG",globalVariable.getUid());
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        NetworkResponse networkResponse = error.networkResponse;
+                        if (networkResponse != null && networkResponse.statusCode == 422) {
+                            Log.i("TAG",networkResponse.toString());
+                        }
+                    }
+                }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+              headers.put("Content-Type", "application/json; charset=utf-8");
+                //  headers.put("User-agent", "My useragent");
+                return headers;
+            }
+
+        };
+// Access the RequestQueue through your singleton class.
+        MySingleton.getInstance(this).addToRequestQueue(jsObjRequest);
+
+
 
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
