@@ -68,12 +68,14 @@ public class LoginScreen extends Activity {
        email=((EditText)findViewById(R.id.etLoginEmail)).getText().toString();
         password=((EditText)findViewById(R.id.etLoginPassword)).getText().toString();
         Map<String, String> jsonParams = new HashMap<String, String>();
-        jsonParams.put("session[email]",email);
-        jsonParams.put("session[password]",password);
+        jsonParams.put("email",email);
+        jsonParams.put("password",password);
         Log.i("TAG",password);
         Log.i("TAG",email);
+        Log.i("TAG",new JSONObject(jsonParams).toString());
         JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.POST, url,new JSONObject(jsonParams),
                 new Response.Listener<JSONObject>() {
+                   // Log.i("TAG","in response listener");
                     @Override
                     public void onResponse(JSONObject response) {
                         //store the user id in global variable
@@ -87,7 +89,8 @@ public class LoginScreen extends Activity {
                     public void onErrorResponse(VolleyError error) {
                         NetworkResponse networkResponse = error.networkResponse;
                         if (networkResponse != null && networkResponse.statusCode == 422) {
-                            Log.i("TAG",networkResponse.toString());
+                            Log.i("TAG",networkResponse.headers.toString());
+
                         }
                     }
                 }){
