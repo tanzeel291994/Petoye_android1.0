@@ -2,7 +2,12 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="text_view_CAE50F27E5974FA393EA3BDC261647D0_size">27.84sp</dimen>
-    <dimen name="text_view_A0FAEDF79FE443E18D36E6895C728FC9_size">46.4sp</dimen>
-    <dimen name="text_view_942B68EBD83A430C8442B90E28E8BE6F_size">27.84sp</dimen>
+    <dimen name="text_view_CAE50F27E5974FA393EA3BDC261647D0_size">27.84dp</dimen>
+    <dimen name="text_view_A0FAEDF79FE443E18D36E6895C728FC9_size">46.4dp</dimen>
+    <dimen name="text_view_942B68EBD83A430C8442B90E28E8BE6F_size">20.84dp</dimen>
+    <dimen name="text_view_8A64EBE0E29E4BF9B539AB355607F8E9_size">20.030464dp</dimen>
+    <dimen name="text_view_F335C6E089554FA887D4424F172861A8_size">20.48dp</dimen>
+    <dimen name="text_view_CEF821399EF043A69B1291DCFC061277_size">20.48dp</dimen>
+    <dimen name="text_view_E7B469B37F234AA99CE088DDEF9F888B_size">20.48dp</dimen>
+    <dimen name="text_view_26D7B73CA3994A6BBCDD13564FFC15D6_size">20.48dp</dimen>
 </resources>

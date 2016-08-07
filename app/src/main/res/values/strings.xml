@@ -11,8 +11,38 @@
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
     <string name="facebook_app_id">803141836486451</string>
+    <string name="basic_info_header">Basic Info</string>
+
+
+    <string-array name="user_category_array">
+        <item>-- Select --</item>
+        <item>Pet Owner</item>
+        <item>Pet Lover</item>
+        <item>Pet Business</item>
+    </string-array>
+
+    <string-array name="pet_category_array">
+        <item>-- Select --</item>
+        <item>Dog</item>
+        <item>Cat</item>
+        <item>Birds</item>
+    </string-array>
+
+    <string-array name="breed_array">
+        <item>-- Select --</item>
+        <item>Doberman Pinscher</item>
+        <item>Akita</item>
+        <item>Dalmatian</item>
+        <item>Clumber Spaniel</item>
+        <item>Barbet</item>
+        <item>Afghan Hound</item>
+        <item>Anatolian Shepherd Dog</item>
+        <item>Black Russian Terrier</item>
+        <item>German Pinscher</item>
+        <item>Pug</item>
+        <item>Puggle</item>
+        <item>Yorkshire Terrier</item>
+    </string-array>
 </resources>

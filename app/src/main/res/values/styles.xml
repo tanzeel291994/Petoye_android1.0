@@ -35,5 +35,35 @@
         <item name="android:textSize">@dimen/text_view_CAE50F27E5974FA393EA3BDC261647D0_size</item>
         <item name="android:textStyle">normal</item>
     </style>
+    <style name="text_view_8A64EBE0E29E4BF9B539AB355607F8E9_style" parent="android:Widget.TextView">
+        <item name="fontPath">fonts/${FONT_FILE}</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_view_8A64EBE0E29E4BF9B539AB355607F8E9_size</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+    <style name="text_view_F335C6E089554FA887D4424F172861A8_style" parent="android:Widget.TextView">
+        <item name="fontPath">fonts/${FONT_FILE}</item>
+        <item name="android:textColor">@color/black2</item>
+        <item name="android:textSize">@dimen/text_view_F335C6E089554FA887D4424F172861A8_size</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+    <style name="text_view_CEF821399EF043A69B1291DCFC061277_style" parent="android:Widget.TextView">
+        <item name="fontPath">fonts/${FONT_FILE}</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_view_CEF821399EF043A69B1291DCFC061277_size</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+    <style name="text_view_E7B469B37F234AA99CE088DDEF9F888B_style" parent="android:Widget.TextView">
+        <item name="fontPath">fonts/${FONT_FILE}</item>
+        <item name="android:textColor">@color/black2</item>
+        <item name="android:textSize">@dimen/text_view_E7B469B37F234AA99CE088DDEF9F888B_size</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+    <style name="text_view_26D7B73CA3994A6BBCDD13564FFC15D6_style" parent="android:Widget.TextView">
+        <item name="fontPath">fonts/${FONT_FILE}</item>
+        <item name="android:textColor">@color/black2</item>
+        <item name="android:textSize">@dimen/text_view_26D7B73CA3994A6BBCDD13564FFC15D6_size</item>
+        <item name="android:textStyle">normal</item>
+    </style>
 
 </resources>
