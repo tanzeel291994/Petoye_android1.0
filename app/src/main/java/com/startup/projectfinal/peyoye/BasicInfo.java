@@ -122,18 +122,15 @@ public class BasicInfo extends Activity  {
         jsonParams.put("otype",user_category);
         jsonParams.put("ptype",pet_category);
         jsonParams.put("breed",breed);
-       // Log.i("ptype",pet_category);
-       // Log.i("TAG",email);
-       // Log.i("TAG",new JSONObject(jsonParams).toString());
+
         JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.POST, url,new JSONObject(jsonParams),
                 new Response.Listener<JSONObject>() {
-                    // Log.i("TAG","in response listener");
+
                     @Override
                     public void onResponse(JSONObject response) {
                         //store the user id in global variable
                         Log.i("TAG", response.toString());
-                        //globalVariable.setUid(response.toString());
-                        //Log.i("TAG",globalVariable.getUid());
+
                     }
                 },
                 new Response.ErrorListener() {
