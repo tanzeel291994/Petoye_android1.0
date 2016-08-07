@@ -79,8 +79,11 @@ public class LoginScreen extends Activity {
                     public void onResponse(JSONObject response) {
                         //store the user id in global variable
                         //Log.i("TAG", response.toString());
-                        globalVariable.setUid(response.toString());
-                        Log.i("TAG",globalVariable.getUid());
+                        try{
+
+                        globalVariable.setUid(response.getString("id"));}
+                        catch(Exception e){
+                        Log.i("TAG",e.toString());}
                     }
                 },
                 new Response.ErrorListener() {
@@ -107,7 +110,7 @@ public class LoginScreen extends Activity {
 
 
 
-        Intent i = new Intent(this, MainActivity.class);
+        Intent i = new Intent(this, BasicInfo.class);
         startActivity(i);
     }
 
