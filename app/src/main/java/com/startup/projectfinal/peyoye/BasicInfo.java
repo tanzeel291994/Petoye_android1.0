@@ -1,3 +1,10 @@
+/*  Required Changes :
+
+>>  onClickDoneButton() network code commented. (cz application crashes) review required.
+
+ */
+
+
 package com.startup.projectfinal.peyoye;
 
 import android.app.Activity;
@@ -109,12 +116,12 @@ public class BasicInfo extends Activity  {
         }
         else
         {
-            //Intent i = new Intent(this, MainActivity.class);
+            Intent i = new Intent(this, MainActivity.class);
             //i.putExtra("username",username );i.putExtra("user_category",user_category );
             //i.putExtra("pet_category",pet_category );i.putExtra("breed",breed );
-            //startActivity(i);
+            startActivity(i);
         }
-        String id=globalVariable.getUid();
+/*        String id=globalVariable.getUid();
         String url = "http://api.petoye.com/users/"+id+"/basicinfo";
         Log.i("TAG",id);
         Map<String, String> jsonParams = new HashMap<String, String>();
@@ -154,6 +161,7 @@ public class BasicInfo extends Activity  {
         };
 // Access the RequestQueue through your singleton class.
         MySingleton.getInstance(this).addToRequestQueue(jsObjRequest);
+  */
     }
 
 }
