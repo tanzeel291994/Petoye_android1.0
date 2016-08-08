@@ -1,8 +1,16 @@
 package com.startup.projectfinal.peyoye;
 
+import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,19 +37,46 @@ import java.util.Map;
 
 import static android.support.v7.appcompat.R.styleable.AlertDialog;
 
-public class BasicInfo extends Activity  {
+public class BasicInfo extends Activity implements LocationListener {
 
-    Spinner spinner_user_category,spinner_pet_category,spinner_breed;
-    String username, user_category, pet_category, breed, alertmsg="";
-    boolean displayerror=false,user_category_set=true,pet_category_set=true,breed_set=true;
+    Spinner spinner_user_category, spinner_pet_category, spinner_breed;
+    String username, user_category, pet_category, breed, alertmsg = "";
+    boolean displayerror = false, user_category_set = true, pet_category_set = true, breed_set = true;
     GlobalClass globalVariable;
+    float latitude=1, longitude=1;
+    private LocationManager locationManager;
+    private String provider;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_basic_info);
-        globalVariable=(GlobalClass) getApplicationContext();
+        globalVariable = (GlobalClass) getApplicationContext();
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        Criteria criteria = new Criteria();
+        //provider = locationManager.getBestProvider(criteria, false);
 
-        spinner_user_category = (Spinner) findViewById(R.id.spinner_user_category);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+           // return;
+            Log.i("TAG","IN...sdsa....");
+        }
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+        //Location location = locationManager.getLastKnownLocation(provider);
+        Location location = locationManager
+                .getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        if (location != null) {
+            //System.out.println("Provider " + provider + " has been selected.");
+            onLocationChanged(location);
+            Log.i("TAG","IN.......");
+        }
+            spinner_user_category = (Spinner) findViewById(R.id.spinner_user_category);
         spinner_pet_category = (Spinner) findViewById(R.id.spinner_pet_category);
         spinner_breed = (Spinner) findViewById(R.id.spinner_breed);
 
@@ -78,7 +113,9 @@ public class BasicInfo extends Activity  {
 
     public void onClickDoneButton(View view)
     {
-        alertmsg="";
+
+
+            alertmsg="";
         username=((EditText)findViewById(R.id.username)).getText().toString();
         // push the strings username , user_category, pet_category, breed to database.
 
@@ -122,7 +159,10 @@ public class BasicInfo extends Activity  {
         jsonParams.put("otype",user_category);
         jsonParams.put("ptype",pet_category);
         jsonParams.put("breed",breed);
-
+        jsonParams.put("lat",String.valueOf(latitude));
+        jsonParams.put("lng",String.valueOf(longitude));
+        Log.i("TAG",String.valueOf(latitude));
+        Log.i("TAG",String.valueOf(longitude));
         JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.POST, url,new JSONObject(jsonParams),
                 new Response.Listener<JSONObject>() {
 
@@ -153,7 +193,28 @@ public class BasicInfo extends Activity  {
 
         };
 // Access the RequestQueue through your singleton class.
+       // gps.stopUsingGPS();
         MySingleton.getInstance(this).addToRequestQueue(jsObjRequest);
     }
 
+    @Override
+    public void onLocationChanged(Location location) {
+latitude=(float)location.getLatitude();
+        longitude=(float)location.getLongitude();
+    }
+
+    @Override
+    public void onStatusChanged(String s, int i, Bundle bundle) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String s) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String s) {
+
+    }
 }
