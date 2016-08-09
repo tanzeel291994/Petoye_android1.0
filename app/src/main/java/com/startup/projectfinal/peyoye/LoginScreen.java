@@ -110,7 +110,7 @@ public class LoginScreen extends Activity {
 
 
 
-        Intent i = new Intent(this, BasicInfo.class);
+        Intent i = new Intent(this, CommentScreen.class);
         startActivity(i);
     }
 

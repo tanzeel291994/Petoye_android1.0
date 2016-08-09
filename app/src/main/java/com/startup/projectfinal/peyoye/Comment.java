@@ -1,6 +1,7 @@
 package com.startup.projectfinal.peyoye;
 
 import android.media.Image;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -8,9 +9,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-/**
- * Created by ABC on 8/7/2016.
- */
+
 
 public class Comment {
     Image img_user;
@@ -32,8 +31,10 @@ public class Comment {
     // Constructor to convert JSON object into a Java class instance
     public Comment(JSONObject object){
         try {
-            this.comment_username = object.getString("name");
-            this.comment_msg = object.getString("msg");
+            this.comment_username = object.getJSONObject("user").getString("username");
+            this.comment_msg = object.getString("comment_message");
+            Log.i("TAG", comment_username);
+            Log.i("TAG", comment_msg);
         } catch (JSONException e) {
             e.printStackTrace();
         }
