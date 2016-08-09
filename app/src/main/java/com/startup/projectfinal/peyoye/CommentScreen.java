@@ -40,6 +40,7 @@ public class CommentScreen extends Activity {
     Context thisActivityContext;
     ListView listView;
     CommentAdapter adapter;
+    GlobalClass globalVariable;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +49,7 @@ public class CommentScreen extends Activity {
         arrayOfComments = new ArrayList<Comment>();
         //adapter = new CommentAdapter(this, arrayOfComments);
         thisActivityContext=this.getApplicationContext();
+        globalVariable=(GlobalClass) getApplicationContext();
        /* JSONArray jsonArray = new JSONArray();
         ArrayList<Comment> comments = Comment.fromJson(jsonArray);
 
@@ -73,8 +75,45 @@ public class CommentScreen extends Activity {
         }
         else {
             arrayOfComments.add(new Comment(username, user_comment));
+            adapter.notifyDataSetChanged();
+            String url = "http://api.petoye.com/feeds/1/comment";
+            Map<String, String> jsonParams = new HashMap<String, String>();
+            jsonParams.put("uid",globalVariable.getUid());
+            jsonParams.put("comment",user_comment);
+            //Log.i("TAG",password);
+            //Log.i("TAG",email);
+            Log.i("TAG",new JSONObject(jsonParams).toString());
+            JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.POST, url,new JSONObject(jsonParams),
+                    new Response.Listener<JSONObject>() {
+                        // Log.i("TAG","in response listener");
+                        @Override
+                        public void onResponse(JSONObject response) {
 
-            // add comment to db
+                            Log.i("TAG", response.toString());
+
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            NetworkResponse networkResponse = error.networkResponse;
+                            if (networkResponse != null && networkResponse.statusCode == 422) {
+                                Log.i("TAG",networkResponse.headers.toString());
+
+                            }
+                        }
+                    }){
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    HashMap<String, String> headers = new HashMap<String, String>();
+                    headers.put("Content-Type", "application/json; charset=utf-8");
+                    //  headers.put("User-agent", "My useragent");
+                    return headers;
+                }
+
+            };
+// Access the RequestQueue through your singleton class.
+            MySingleton.getInstance(this).addToRequestQueue(jsObjRequest);
 
             ((EditText) findViewById(R.id.added_comment_msg)).setText("");
         }

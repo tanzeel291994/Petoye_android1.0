@@ -33,8 +33,8 @@ public class Comment {
         try {
             this.comment_username = object.getJSONObject("user").getString("username");
             this.comment_msg = object.getString("comment_message");
-            Log.i("TAG", comment_username);
-            Log.i("TAG", comment_msg);
+            //Log.i("TAG", comment_username);
+            //Log.i("TAG", comment_msg);
         } catch (JSONException e) {
             e.printStackTrace();
         }
