@@ -2,35 +2,60 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
+    tools:context="com.startup.projectfinal.peyoye.LetterboxScreen"
+    android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.startup.projectfinal.peyoye.MainActivity">
+    android:orientation="vertical"
+    android:fitsSystemWindows="true">
 
-    <!---  =============================    header  =============================== -->
-    <include layout="@layout/header"/>
-
-    <!-- =============================   feeds  =============================== -->
     <LinearLayout
-        android:layout_below="@+id/header"
-        android:layout_above="@+id/footer"
-        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_width="match_parent"
-        android:orientation="vertical">
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tabs"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/header"
+        android:background="@color/medium_turquoise" >
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:background="@color/medium_turquoise"
+            android:padding="5dp"
+            android:layout_weight="0.1"
+            android:src="@drawable/back"
+            android:onClick="goBack"/>
+        <TextView
+            style="@style/text_view_8A64EBE0E29E4BF9B539AB355607F8E9_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabMode="fixed"
-            app:tabGravity="fill"
-            android:fillViewport="false"
-            android:fadeScrollbars="true" />
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewpager"
-            android:layout_width="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            android:layout_height="fill_parent"/>
+            android:text="Letterbox"
+            android:layout_weight="0.9"
+            android:textAlignment="center"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
+            />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_above="@+id/footer"
+        android:layout_below="@+id/header"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
+            style="@style/TabNameStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
 
     <!---  =============================    footer  =============================== -->
     <LinearLayout
@@ -87,13 +112,4 @@
             android:background="@color/white"
             android:onClick="onClickMyProfileButton" />
     </LinearLayout>
-<!--    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <android.support.v4.view.ViewPager
-            android:id="@+id/footer"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
-    -->
 </RelativeLayout>

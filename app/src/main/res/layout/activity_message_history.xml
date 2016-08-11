@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_message_history"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.startup.projectfinal.peyoye.MessageHistory">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/medium_turquoise" >
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:background="@color/medium_turquoise"
+            android:padding="5dp"
+            android:layout_weight="0.1"
+            android:src="@drawable/back"
+            android:onClick="goBack"/>
+        <TextView
+            android:id="@+id/other_user"
+            style="@style/text_view_8A64EBE0E29E4BF9B539AB355607F8E9_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ameya Vichare"
+            android:layout_weight="0.9"
+            android:textAlignment="center"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
+            />
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.9">
+        <ListView
+            android:divider="@color/white"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/list_msghistory"  />
+    </TableRow>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/manatee"
+        />
+
+    <TableRow
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+        <EditText
+            style="@style/text_view_F8E6230002AB49DBAA19EB2627C0E1DA_style"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Add in a message..."
+            android:layout_margin="5dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.7"
+            android:id="@+id/added_msg"
+            />
+        <Button
+            style="@style/text_view_C63846713CDD41F4BE0581ADC9AD7345_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@color/medium_turquoise"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:text="Message"
+            android:onClick="onMessageClicked"
+            />
+    </TableRow>
+</TableLayout>

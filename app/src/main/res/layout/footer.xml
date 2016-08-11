@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/footer"
+    android:padding="5dp"
+    android:orientation="horizontal"
+    android:layout_alignParentBottom="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/home"
+        android:layout_gravity="center"
+        android:layout_weight="0.2"
+        android:background="@color/white"
+        android:onClick="onClickHomeButton" />
+
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:src="@drawable/users"
+        android:background="@color/white"
+        android:onClick="onClickAddFriendsButton" />
+
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_weight="0.2"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:src="@drawable/plus_button"
+        android:background="@color/white"
+        android:onClick="onClickPlusButton"/>
+
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_weight="0.2"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:src="@drawable/notif"
+        android:background="@color/white"
+        android:onClick="onClickNotificationButton"/>
+
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="0.2"
+        android:layout_height="wrap_content"
+        android:src="@drawable/my_profile"
+        android:background="@color/white"
+        android:onClick="onClickMyProfileButton" />
+</LinearLayout>
