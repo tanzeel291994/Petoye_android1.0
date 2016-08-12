@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="5dp">
+    <TableRow>
+    <ImageView
+        android:id="@+id/notification_img"
+        android:layout_weight="0.2"
+        android:layout_width="0dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_height="fill_parent" />
+    <TextView
+        android:id="@+id/notification_msg"
+        android:layout_width="0dp"
+        android:layout_weight="0.8"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:text=" Sleep follows Dreams. "
+        style="@style/text_view_1BCB2F10873D467C941F892D92765D13_style" />
+    </TableRow>
+    <View
+        android:padding="5dp"
+        android:background="@color/gainsboro"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"/>
+</TableLayout>

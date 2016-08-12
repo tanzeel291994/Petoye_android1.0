@@ -1,18 +1,18 @@
 <resources>
     <declare-styleable name="SympliTextView">
-        <attr name="fontPath" format="string"/>
+        <attr name="fontPath" format="string" />
 
         <!-- Inner shadow settings. -->
-        <attr name="innerShadowColor" format="color"/>
-        <attr name="innerShadowDx" format="dimension"/>
-        <attr name="innerShadowDy" format="dimension"/>
-        <attr name="innerShadowRadius" format="dimension"/>
+        <attr name="innerShadowColor" format="color" />
+        <attr name="innerShadowDx" format="dimension" />
+        <attr name="innerShadowDy" format="dimension" />
+        <attr name="innerShadowRadius" format="dimension" />
 
         <!-- Outer shadow settings. -->
-        <attr name="outerShadowColor" format="color"/>
-        <attr name="outerShadowDx" format="dimension"/>
-        <attr name="outerShadowDy" format="dimension"/>
-        <attr name="outerShadowRadius" format="dimension"/>
+        <attr name="outerShadowColor" format="color" />
+        <attr name="outerShadowDx" format="dimension" />
+        <attr name="outerShadowDy" format="dimension" />
+        <attr name="outerShadowRadius" format="dimension" />
     </declare-styleable>
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -35,58 +35,111 @@
         <item name="android:textSize">@dimen/text_view_CAE50F27E5974FA393EA3BDC261647D0_size</item>
         <item name="android:textStyle">normal</item>
     </style>
+
     <style name="text_view_8A64EBE0E29E4BF9B539AB355607F8E9_style" parent="android:Widget.TextView">
         <item name="fontPath">fonts/${FONT_FILE}</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/text_view_8A64EBE0E29E4BF9B539AB355607F8E9_size</item>
         <item name="android:textStyle">normal</item>
     </style>
+
     <style name="text_view_F335C6E089554FA887D4424F172861A8_style" parent="android:Widget.TextView">
         <item name="fontPath">fonts/${FONT_FILE}</item>
         <item name="android:textColor">@color/black2</item>
         <item name="android:textSize">@dimen/text_view_F335C6E089554FA887D4424F172861A8_size</item>
         <item name="android:textStyle">normal</item>
     </style>
+
     <style name="text_view_CEF821399EF043A69B1291DCFC061277_style" parent="android:Widget.TextView">
         <item name="fontPath">fonts/${FONT_FILE}</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/text_view_CEF821399EF043A69B1291DCFC061277_size</item>
         <item name="android:textStyle">normal</item>
     </style>
+
     <style name="text_view_E7B469B37F234AA99CE088DDEF9F888B_style" parent="android:Widget.TextView">
         <item name="fontPath">fonts/${FONT_FILE}</item>
         <item name="android:textColor">@color/black2</item>
         <item name="android:textSize">@dimen/text_view_E7B469B37F234AA99CE088DDEF9F888B_size</item>
         <item name="android:textStyle">normal</item>
     </style>
+
     <style name="text_view_C63846713CDD41F4BE0581ADC9AD7345_style" parent="android:Widget.TextView">
         <item name="fontPath">fonts/${FONT_FILE}</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/text_view_C63846713CDD41F4BE0581ADC9AD7345_size</item>
         <item name="android:textStyle">normal</item>
     </style>
+
     <style name="text_view_41E46FA6584C495C9CBBCF3DD2ED17FB_style" parent="android:Widget.TextView">
         <item name="fontPath">fonts/${FONT_FILE}</item>
         <item name="android:textColor">@color/ucla_blue</item>
         <item name="android:textSize">@dimen/text_view_41E46FA6584C495C9CBBCF3DD2ED17FB_size</item>
         <item name="android:textStyle">normal</item>
     </style>
+
     <style name="text_view_A444B11983E44DCCA3641B2B56512B3D_style" parent="android:Widget.TextView">
         <item name="fontPath">fonts/${FONT_FILE}</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">@dimen/text_view_A444B11983E44DCCA3641B2B56512B3D_size</item>
         <item name="android:textStyle">normal</item>
     </style>
+
     <style name="text_view_F8E6230002AB49DBAA19EB2627C0E1DA_style" parent="android:Widget.TextView">
         <item name="fontPath">fonts/${FONT_FILE}</item>
         <item name="android:textColor">@color/ucla_blue</item>
         <item name="android:textSize">@dimen/text_view_F8E6230002AB49DBAA19EB2627C0E1DA_size</item>
         <item name="android:textStyle">normal</item>
     </style>
+
     <style name="text_view_26D7B73CA3994A6BBCDD13564FFC15D6_style" parent="android:Widget.TextView">
         <item name="fontPath">fonts/${FONT_FILE}</item>
         <item name="android:textColor">@color/black2</item>
         <item name="android:textSize">@dimen/text_view_26D7B73CA3994A6BBCDD13564FFC15D6_size</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+    <style name="text_view_FEA83333C5424DE8BA52770FD27EDF41_style" parent="android:Widget.TextView">
+        <item name="fontPath">fonts/${FONT_FILE}</item>
+        <item name="android:textColor">@color/ucla_blue</item>
+        <item name="android:textSize">@dimen/text_view_FEA83333C5424DE8BA52770FD27EDF41_size</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+    <style name="text_view_1BCB2F10873D467C941F892D92765D13_style" parent="android:Widget.TextView">
+        <item name="fontPath">fonts/${FONT_FILE}</item>
+        <item name="android:textColor">@color/silver</item>
+        <item name="android:textSize">@dimen/text_view_1BCB2F10873D467C941F892D92765D13_size</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+    <style name="text_view_5D0FA4EA4FA544C69B077C5EB75680D1_style" parent="android:Widget.TextView">
+        <item name="fontPath">fonts/${FONT_FILE}</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/text_view_5D0FA4EA4FA544C69B077C5EB75680D1_size</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="text_view_2CBF0717FF594FE0910A46F407508655_style" parent="android:Widget.TextView">
+        <item name="fontPath">fonts/${FONT_FILE}</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_view_2CBF0717FF594FE0910A46F407508655_size</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="TabNameStyle" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">@color/verdigris</item>
+        <item name="tabTextAppearance">@style/TabTextAppearance</item>
+        <item name="tabSelectedTextColor">@color/verdigris</item>
+    </style>
+    <style name="TabTextAppearance" >
+        <item name="fontPath">fonts/${FONT_FILE}</item>
+        <item name="android:textColor">@color/medium_turquoise</item>
+        <item name="android:textSize">20.0sp</item>
         <item name="android:textStyle">normal</item>
     </style>
 
