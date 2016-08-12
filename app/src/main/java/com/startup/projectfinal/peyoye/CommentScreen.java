@@ -132,7 +132,7 @@ public class CommentScreen extends Activity {
         {
             try
             {
-                //String id=globalVariable.getUid();
+                //take the feed id from the feeds data
                 String url = "http://api.petoye.com/feeds/1/showcomment";
                 JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.GET, url,null,
                         new Response.Listener<JSONObject>() {
