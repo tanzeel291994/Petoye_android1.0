@@ -1,8 +1,10 @@
 package com.startup.projectfinal.peyoye;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,11 +27,12 @@ public class LoginScreen extends Activity {
 
     private String email,password;
     GlobalClass globalVariable;
+    boolean isAuthorized;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         globalVariable=(GlobalClass) getApplicationContext();
-
+        isAuthorized=false;
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_login_screen);
 
@@ -78,9 +81,10 @@ public class LoginScreen extends Activity {
                     @Override
                     public void onResponse(JSONObject response) {
                         //store the user id in global variable
+
                         //Log.i("TAG", response.toString());
                         try{
-
+                            isAuthorized=true;
                         globalVariable.setUid(response.getString("id"));}
                         catch(Exception e){
                         Log.i("TAG",e.toString());}
@@ -108,10 +112,22 @@ public class LoginScreen extends Activity {
 // Access the RequestQueue through your singleton class.
         MySingleton.getInstance(this).addToRequestQueue(jsObjRequest);
 
-
-
-        Intent i = new Intent(this, CommentScreen.class);
-        startActivity(i);
+        if(isAuthorized) {
+            Intent i = new Intent(this, CommentScreen.class);
+            startActivity(i);
+        }
+        else
+        {
+            AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+            alertDialog.setTitle("Login");
+            alertDialog.setMessage("wrong credentials");
+            alertDialog.setButton(DialogInterface.BUTTON_NEUTRAL,"OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            alertDialog.show();
+        }
     }
 
 }

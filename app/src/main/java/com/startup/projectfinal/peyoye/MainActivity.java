@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
+import android.os.AsyncTask;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -17,6 +18,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,11 +29,20 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -137,21 +148,40 @@ public class MainActivity extends AppCompatActivity {
 
     public static class Feed{
         Image user_img;
-        String user_name,timestamp,img_description,like_comment_count;
+        String user_name,timestamp,img_description,like_count,author_id,comment_count;
 
         public Feed(){}
-        public Feed(String user_name,String timestamp,String img_description,String like_comment_count)
+        public Feed(String user_name,String timestamp,String img_description,String like_count,String comment_count,String author_id)
         {
             this.user_name=user_name;
             this.timestamp=timestamp;
             this.img_description=img_description;
-            this.like_comment_count=like_comment_count;
+            this.like_count=like_count;
+            this.author_id=author_id;
+            this.comment_count=comment_count;
+
         }
-        public Feed(JSONObject object){ }
+        public Feed(JSONObject object)
+        {try
+        {
+            // this.sender_name = object.getJSONObject("user").getString("username");
+            this.img_description = object.getString("message");
+            this.user_name=object.getJSONObject("user").getString("username");
+            this.author_id=object.getJSONObject("user").getString("id");
+            this.like_count = object.getString("like_count");
+            this.comment_count = object.getString("comment_count");
+            this.timestamp = object.getString("created_at");
+            //Log.i("TAG", comment_username);
+            //Log.i("TAG", comment_msg);
+        } catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+        }
 
         // Factory method to convert an array of JSON objects into a list of objects
         // Comment.fromJson(jsonArray);
-        public ArrayList<Feed> fromJson(JSONArray jsonObjects) {
+        public static ArrayList<Feed> fromJson(JSONArray jsonObjects) {
             ArrayList<Feed> feeds = new ArrayList<Feed>();
             for (int i = 0; i < jsonObjects.length(); i++) {
                 try {
@@ -205,7 +235,7 @@ public class MainActivity extends AppCompatActivity {
             viewHolder.username.setText(feed.user_name);
             viewHolder.timestamp.setText(feed.timestamp);
             viewHolder.img_description.setText(feed.img_description);
-            viewHolder.like_comment_count.setText(feed.like_comment_count);
+            viewHolder.like_comment_count.setText(feed.like_count+" Likes"+ feed.comment_count+" Comments");
             //viewHolder.feed_img.setImageBitmap();
 
             // Return the completed view to render on screen
@@ -240,8 +270,8 @@ public class MainActivity extends AppCompatActivity {
 
             adapter=new FeedAdapter(this.getActivity(),arrayOfFeeds);
 
-            arrayOfFeeds.add(new Feed("Kirti Karande","2 hours ago","Such a cute ..... I dont know what to call it. ;)","208 Likes 300 Comments"));
-            arrayOfFeeds.add(new Feed("Kirti Karande","2 hours ago","Such a cute ..... I dont know what to call it. ;)","208 Likes 300 Comments"));
+           // arrayOfFeeds.add(new Feed("Kirti Karande","2 hours ago","Such a cute ..... I dont know what to call it. ;)","208 Likes 300 Comments"));
+            //arrayOfFeeds.add(new Feed("Kirti Karande","2 hours ago","Such a cute ..... I dont know what to call it. ;)","208 Likes 300 Comments"));
 
             list_trending_feeds=(ListView)rootView.findViewById(R.id.list_trending_feeds);
             list_trending_feeds.setAdapter(adapter);
@@ -259,7 +289,7 @@ public class MainActivity extends AppCompatActivity {
         ListView list_followed_feeds;
         ArrayAdapter adapter;
         ArrayList<Feed> arrayOfFeeds;
-
+        Context thisActivityContext;
         public FollowedFragment() { }
 
         public static FollowedFragment newInstance()
@@ -275,16 +305,83 @@ public class MainActivity extends AppCompatActivity {
 
             arrayOfFeeds=new ArrayList<Feed>();
 
+            thisActivityContext=getContext();
+
             adapter=new FeedAdapter(this.getActivity(),arrayOfFeeds);
 
             list_followed_feeds=(ListView)rootView.findViewById(R.id.list_followed_feeds);
             list_followed_feeds.setAdapter(adapter);
 
-            arrayOfFeeds.add(new Feed("Kirti Karande","2 hours ago","Such a cute ..... I dont know what to call it. ;)","208 Likes 300 Comments"));
-            arrayOfFeeds.add(new Feed("Kirti Karande","2 hours ago","Such a cute ..... I dont know what to call it. ;)","208 Likes 300 Comments"));
-            arrayOfFeeds.add(new Feed("Kirti Karande","2 hours ago","Such a cute ..... I dont know what to call it. ;)","208 Likes 300 Comments"));
-
+            //arrayOfFeeds.add(new Feed("Kirti Karande","2 hours ago","Such a cute ..... I dont know what to call it. ;)","208 Likes 300 Comments"));
+            //arrayOfFeeds.add(new Feed("Kirti Karande","2 hours ago","Such a cute ..... I dont know what to call it. ;)","208 Likes 300 Comments"));
+            //arrayOfFeeds.add(new Feed("Kirti Karande","2 hours ago","Such a cute ..... I dont know what to call it. ;)","208 Likes 300 Comments"));
+            new DownloadFollowedFeeds().execute();
             return rootView;
+        }
+        public class DownloadFollowedFeeds extends AsyncTask<Void, Void,Void> {
+
+
+            @Override
+            protected Void doInBackground(Void... params) {
+                try {
+
+                    //String url = "http://api.petoye.com/conversations/"+globalVariable.getUid()+"/all";
+                    String url = "http://api.petoye.com//feeds/1/followedfeeds";
+                    JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.GET, url, null,
+                            new Response.Listener<JSONObject>() {
+
+                                @Override
+                                public void onResponse(JSONObject response) {
+
+                                    Log.i("TAG", response.toString());
+                                    try {
+                                        arrayOfFeeds = Feed.fromJson(response.getJSONArray("feeds"));
+                                       // Log.i("TAG", String.valueOf(arrayOfFeeds.size()));
+                                        adapter = new FeedAdapter(thisActivityContext,arrayOfFeeds);
+                                        list_followed_feeds.setAdapter(adapter);
+                                    } catch (Exception e)
+                                    {
+                                    }
+
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    NetworkResponse networkResponse = error.networkResponse;
+                                    if (networkResponse != null && networkResponse.statusCode == 422) {
+                                        Log.i("TAG", networkResponse.headers.toString());
+
+                                    }
+                                }
+                            }) {
+                        @Override
+                        public Map<String, String> getHeaders() throws AuthFailureError {
+                            HashMap<String, String> headers = new HashMap<String, String>();
+                            headers.put("Content-Type", "application/json; charset=utf-8");
+                            //  headers.put("User-agent", "My useragent");
+                            return headers;
+                        }
+
+                    };
+                    // Access the RequestQueue through your singleton class.
+
+                    MySingleton.getInstance(thisActivityContext).addToRequestQueue(jsObjRequest);
+
+
+                } catch (Exception e) {
+                }
+
+                return null;
+            }
+
+
+            protected void onPostExecute(Void result) {
+                super.onPostExecute(result);
+                Log.i("TAG", "in....");
+
+
+            }
         }
     }
 
@@ -315,8 +412,8 @@ public class MainActivity extends AppCompatActivity {
 
             adapter=new FeedAdapter(this.getActivity(),arrayOfFeeds);
 
-            arrayOfFeeds.add(new Feed("Kirti Karande","2 hours ago","Such a cute ..... I dont know what to call it. ;)","208 Likes 300 Comments"));
-            arrayOfFeeds.add(new Feed("Kirti Karande","2 hours ago","Such a cute ..... I dont know what to call it. ;)","208 Likes 300 Comments"));
+           // arrayOfFeeds.add(new Feed("Kirti Karande","2 hours ago","Such a cute ..... I dont know what to call it. ;)","208 Likes 300 Comments"));
+           // arrayOfFeeds.add(new Feed("Kirti Karande","2 hours ago","Such a cute ..... I dont know what to call it. ;)","208 Likes 300 Comments"));
 
             list_nearby_pets_feeds=(ListView)rootView.findViewById(R.id.list_nearby_pets_feeds);
             list_nearby_pets_feeds.setAdapter(adapter);

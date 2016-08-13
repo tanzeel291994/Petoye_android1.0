@@ -38,7 +38,7 @@ public class MessageHistory extends Activity {
     ArrayList<Message> arrayOfMessages;
     ArrayAdapter adapter;
     String new_msg;
-GlobalClass globalClass;
+    GlobalClass globalClass;
     String my_user_id;
     Context thisActivityContext;
     @Override
