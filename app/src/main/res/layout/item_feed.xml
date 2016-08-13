@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white1"
+    android:padding="5dp" >
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_margin="2dp"
+            android:background="@color/timberwolf"
+            android:src="@drawable/com_facebook_profile_picture_blank_square"
+            android:layout_weight="0.2"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent" />
+        <LinearLayout
+            android:layout_margin="2dp"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_weight="0.7"
+            android:layout_height="wrap_content">
+            <TextView
+                style="@style/text_view_DB1C44AEDDA8487EB1CD1BB20054838C_style"
+                android:text="Ameya Vichare"
+                android:layout_margin="2dp"
+                android:clickable="true"
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                style="@style/text_view_CBC55B405CEE442394C7FC1F187C60FE_style"
+                android:text="2 Hours ago"
+                android:id="@+id/timestamp"
+                android:layout_margin="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <ImageView
+            android:layout_margin="2dp"
+            android:src="@drawable/report_dots"
+            android:layout_width="0dp"
+            android:layout_weight="0.1"
+            android:layout_height="fill_parent"
+            />
+    </TableRow>
+    <TextView
+        style="@style/text_view_1625D2B0760B4A8FA1CE29B0B77DED2F_style"
+        android:padding="5dp"
+        android:text="Such a cute puppy !"
+        android:id="@+id/img_description"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"/>
+    <ImageView
+        android:id="@+id/feed_img"
+        android:src="@mipmap/ic_launcher"
+        android:scaleType="centerInside"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        />
+    <TextView
+        style="@style/text_view_576412407EF6433A888B7D7B0EA0A6D3_style"
+        android:id="@+id/likes_comments_count"
+        android:padding="2dp"
+        android:text="880 Likes 852 Comments"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <View
+        android:layout_margin="2dp"
+        android:background="@color/gainsboro"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <TableRow>
+        <Button
+            style="@style/text_view_A9AAE4037A894B809681844998D44BE8_style"
+            android:onClick="onLikeClicked"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:drawableStart="@drawable/like_big"
+            android:drawableLeft="@drawable/like_big"
+            android:background="@color/white"
+            android:drawablePadding="6dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="Like"
+            />
+        <Button
+            style="@style/text_view_A9AAE4037A894B809681844998D44BE8_style"
+            android:onClick="GotoCommentsPage"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:drawableStart="@drawable/add_comment"
+            android:drawableLeft="@drawable/add_comment"
+            android:drawablePadding="6dp"
+            android:background="@color/white"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="Comment"
+            />
+        <Button
+            style="@style/text_view_A9AAE4037A894B809681844998D44BE8_style"
+            android:onClick="onShareviaClicked"
+            android:background="@color/white"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:drawableStart="@drawable/share_via"
+            android:drawableLeft="@drawable/share_via"
+            android:drawablePadding="6dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="Share via"
+            />
+    </TableRow>
+</TableLayout>

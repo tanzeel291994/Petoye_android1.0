@@ -70,14 +70,42 @@
         <item name="android:textSize">@dimen/text_view_C63846713CDD41F4BE0581ADC9AD7345_size</item>
         <item name="android:textStyle">normal</item>
     </style>
-
+    <style name="text_view_576412407EF6433A888B7D7B0EA0A6D3_style" parent="android:Widget.TextView">
+        <item name="fontPath">fonts/${FONT_FILE}</item>
+        <item name="android:textColor">@color/ash_grey2</item>
+        <item name="android:textSize">@dimen/text_view_576412407EF6433A888B7D7B0EA0A6D3_size</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+    <style name="text_view_A9AAE4037A894B809681844998D44BE8_style" parent="android:Widget.TextView">
+        <item name="fontPath">fonts/${FONT_FILE}</item>
+        <item name="android:textColor">@color/ash_grey1</item>
+        <item name="android:textSize">@dimen/text_view_A9AAE4037A894B809681844998D44BE8_size</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+    <style name="text_view_1625D2B0760B4A8FA1CE29B0B77DED2F_style" parent="android:Widget.TextView">
+        <item name="fontPath">fonts/${FONT_FILE}</item>
+        <item name="android:textColor">@color/onyx</item>
+        <item name="android:textSize">@dimen/text_view_1625D2B0760B4A8FA1CE29B0B77DED2F_size</item>
+        <item name="android:textStyle">normal</item>
+    </style>
     <style name="text_view_41E46FA6584C495C9CBBCF3DD2ED17FB_style" parent="android:Widget.TextView">
         <item name="fontPath">fonts/${FONT_FILE}</item>
         <item name="android:textColor">@color/ucla_blue</item>
         <item name="android:textSize">@dimen/text_view_41E46FA6584C495C9CBBCF3DD2ED17FB_size</item>
         <item name="android:textStyle">normal</item>
     </style>
-
+    <style name="text_view_DB1C44AEDDA8487EB1CD1BB20054838C_style" parent="android:Widget.TextView">
+        <item name="fontPath">fonts/${FONT_FILE}</item>
+        <item name="android:textColor">@color/ucla_blue</item>
+        <item name="android:textSize">@dimen/text_view_DB1C44AEDDA8487EB1CD1BB20054838C_size</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+    <style name="text_view_CBC55B405CEE442394C7FC1F187C60FE_style" parent="android:Widget.TextView">
+        <item name="fontPath">fonts/${FONT_FILE}</item>
+        <item name="android:textColor">@color/ash_grey1</item>
+        <item name="android:textSize">@dimen/text_view_CBC55B405CEE442394C7FC1F187C60FE_size</item>
+        <item name="android:textStyle">normal</item>
+    </style>
     <style name="text_view_A444B11983E44DCCA3641B2B56512B3D_style" parent="android:Widget.TextView">
         <item name="fontPath">fonts/${FONT_FILE}</item>
         <item name="android:textColor">@color/black</item>

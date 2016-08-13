@@ -8,6 +8,7 @@
     android:id="@+id/header">
 
     <ImageButton
+        android:clickable="false"
         android:id="@+id/btnHamburger"
         android:layout_width="0dp"
         android:layout_weight="0.1"
@@ -27,6 +28,7 @@
         android:layout_margin="10dp"       />
 
     <Button
+        android:clickable="false"
         android:text="comment"
         android:layout_width="0dp"
         android:layout_weight="0.3"
