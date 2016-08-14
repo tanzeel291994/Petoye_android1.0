@@ -41,13 +41,14 @@ public class CommentScreen extends Activity {
     ListView listView;
     CommentAdapter adapter;
     GlobalClass globalVariable;
+    String feed_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comment_screen);
-
+        feed_id=getIntent().getStringExtra("feed_id");
         arrayOfComments = new ArrayList<Comment>();
-        //adapter = new CommentAdapter(this, arrayOfComments);
+        adapter = new CommentAdapter(this, arrayOfComments);
         thisActivityContext=this.getApplicationContext();
         globalVariable=(GlobalClass) getApplicationContext();
        /* JSONArray jsonArray = new JSONArray();
@@ -56,7 +57,8 @@ public class CommentScreen extends Activity {
         adapter.addAll(comments);
         */
 //start an async task.......
-        new DownloadComments().execute();
+
+        new DownloadComments().execute(feed_id);
        //arrayOfComments.add(new Comment("Kirti Karande", "It's 2.01 AM "));
         //arrayOfComments.add(new Comment("Kirti Karande", "It's 2.02 AM "));
         //arrayOfComments.add(new Comment("Kirti Karande", "It's 2.03 AM "));
@@ -76,7 +78,7 @@ public class CommentScreen extends Activity {
         else {
             arrayOfComments.add(new Comment(username, user_comment));
             adapter.notifyDataSetChanged();
-            String url = "http://api.petoye.com/feeds/1/comment";
+            String url = "http://api.petoye.com/feeds/"+feed_id+"/comment";
             Map<String, String> jsonParams = new HashMap<String, String>();
             jsonParams.put("uid",globalVariable.getUid());
             jsonParams.put("comment",user_comment);
@@ -123,17 +125,17 @@ public class CommentScreen extends Activity {
         Intent i=new Intent(this, MainActivity.class);
         startActivity(i);
     }
-    public class DownloadComments extends AsyncTask<Void, Void,Void>
+    public class DownloadComments extends AsyncTask<String, Void,Void>
     {
 
 
         @Override
-        protected Void doInBackground(Void... params)
+        protected Void doInBackground(String... fid)
         {
             try
             {
                 //take the feed id from the feeds data
-                String url = "http://api.petoye.com/feeds/1/showcomment";
+                String url = "http://api.petoye.com/feeds/"+fid[0]+"/showcomment";
                 JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.GET, url,null,
                         new Response.Listener<JSONObject>() {
 

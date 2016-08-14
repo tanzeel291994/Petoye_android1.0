@@ -113,7 +113,7 @@ public class LoginScreen extends Activity {
         MySingleton.getInstance(this).addToRequestQueue(jsObjRequest);
 
         if(isAuthorized) {
-            Intent i = new Intent(this, CommentScreen.class);
+            Intent i = new Intent(this, MainActivity.class);
             startActivity(i);
         }
         else

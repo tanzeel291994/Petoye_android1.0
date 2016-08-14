@@ -75,7 +75,6 @@
     <TableRow>
         <Button
             style="@style/text_view_A9AAE4037A894B809681844998D44BE8_style"
-            android:onClick="onLikeClicked"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:drawableStart="@drawable/like_big"
@@ -85,10 +84,12 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:text="Like"
+            android:id="@+id/btnLike_feed"
+            android:focusable="false"
             />
         <Button
             style="@style/text_view_A9AAE4037A894B809681844998D44BE8_style"
-            android:onClick="GotoCommentsPage"
+
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:drawableStart="@drawable/add_comment"
@@ -98,6 +99,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:text="Comment"
+            android:id="@+id/btn_comments_feed"
             />
         <Button
             style="@style/text_view_A9AAE4037A894B809681844998D44BE8_style"

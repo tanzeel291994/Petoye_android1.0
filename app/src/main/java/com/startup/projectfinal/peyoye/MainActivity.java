@@ -24,10 +24,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
@@ -102,12 +105,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickMyProfileButton(View view) {}
 
-    public void GotoCommentsPage(View view)
+    /*public void GotoCommentsPage(View view)
     {
         Intent i=new Intent(this, CommentScreen.class);
         startActivity(i);
     }
-    public  void  onLikeClicked(View view){}
+    public  void  onLikeClicked(View view){}*/
     public void onShareviaClicked(View view){}
 
 
@@ -148,10 +151,11 @@ public class MainActivity extends AppCompatActivity {
 
     public static class Feed{
         Image user_img;
-        String user_name,timestamp,img_description,like_count,author_id,comment_count;
+        String user_name,timestamp,img_description,like_count,author_id,comment_count,feed_id;
 
         public Feed(){}
-        public Feed(String user_name,String timestamp,String img_description,String like_count,String comment_count,String author_id)
+        public Feed(String user_name,String timestamp,String img_description,
+                    String like_count,String comment_count,String author_id,String feed_id)
         {
             this.user_name=user_name;
             this.timestamp=timestamp;
@@ -159,6 +163,7 @@ public class MainActivity extends AppCompatActivity {
             this.like_count=like_count;
             this.author_id=author_id;
             this.comment_count=comment_count;
+            this.feed_id=feed_id;
 
         }
         public Feed(JSONObject object)
@@ -171,7 +176,8 @@ public class MainActivity extends AppCompatActivity {
             this.like_count = object.getString("like_count");
             this.comment_count = object.getString("comment_count");
             this.timestamp = object.getString("created_at");
-            //Log.i("TAG", comment_username);
+            this.feed_id=object.getString("id");
+            //Log.i("TAG",feed_id);
             //Log.i("TAG", comment_msg);
         } catch (JSONException e)
         {
@@ -210,7 +216,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             // Get the data item for this position
-            Feed feed = getItem(position);
+            final Feed feed = (Feed) getItem(position);
+
             // Check if an existing view is being reused, otherwise inflate the view
             ViewHolder viewHolder; // view lookup cache stored in tag
             if (convertView == null) {
@@ -235,12 +242,30 @@ public class MainActivity extends AppCompatActivity {
             viewHolder.username.setText(feed.user_name);
             viewHolder.timestamp.setText(feed.timestamp);
             viewHolder.img_description.setText(feed.img_description);
-            viewHolder.like_comment_count.setText(feed.like_count+" Likes"+ feed.comment_count+" Comments");
+            viewHolder.like_comment_count.setText(feed.like_count+" Likes "+ feed.comment_count+" Comments");
             //viewHolder.feed_img.setImageBitmap();
+            Button btn_like_feed = (Button) convertView.findViewById(R.id.btnLike_feed);
+            btn_like_feed.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    //feed.like_count=feed.like_count+1;
+                    new FollowedFragment.LikeFeed().execute(feed.feed_id);
 
+
+                }
+            });
+           Button btn_comment_feed = (Button) convertView.findViewById(R.id.btn_comments_feed);
+            btn_comment_feed.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent i = new Intent(FollowedFragment.thisActivityContext, CommentScreen.class);
+                    i.putExtra("feed_id",feed.feed_id);
+                    FollowedFragment.thisActivityContext.startActivity(i);
+
+                }
+            });
             // Return the completed view to render on screen
             return convertView;
         }
+
     }
 
 //=========================================================================================
@@ -270,8 +295,7 @@ public class MainActivity extends AppCompatActivity {
 
             adapter=new FeedAdapter(this.getActivity(),arrayOfFeeds);
 
-           // arrayOfFeeds.add(new Feed("Kirti Karande","2 hours ago","Such a cute ..... I dont know what to call it. ;)","208 Likes 300 Comments"));
-            //arrayOfFeeds.add(new Feed("Kirti Karande","2 hours ago","Such a cute ..... I dont know what to call it. ;)","208 Likes 300 Comments"));
+
 
             list_trending_feeds=(ListView)rootView.findViewById(R.id.list_trending_feeds);
             list_trending_feeds.setAdapter(adapter);
@@ -289,7 +313,9 @@ public class MainActivity extends AppCompatActivity {
         ListView list_followed_feeds;
         ArrayAdapter adapter;
         ArrayList<Feed> arrayOfFeeds;
-        Context thisActivityContext;
+       static Context thisActivityContext;
+        GlobalClass globalClass;
+        String uid;
         public FollowedFragment() { }
 
         public static FollowedFragment newInstance()
@@ -297,14 +323,19 @@ public class MainActivity extends AppCompatActivity {
             FollowedFragment fragment = new FollowedFragment();
             return fragment;
         }
-
+        public void startact()
+        {
+            Intent i = new Intent(FollowedFragment.thisActivityContext, CommentScreen.class);
+            startActivity(i);
+        }
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_followed_feeds, container, false);
+            final View rootView = inflater.inflate(R.layout.fragment_followed_feeds, container, false);
 
             arrayOfFeeds=new ArrayList<Feed>();
-
+            //globalClass=(GlobalClass)getContext();
+            //uid=globalClass.getUid();
             thisActivityContext=getContext();
 
             adapter=new FeedAdapter(this.getActivity(),arrayOfFeeds);
@@ -312,9 +343,11 @@ public class MainActivity extends AppCompatActivity {
             list_followed_feeds=(ListView)rootView.findViewById(R.id.list_followed_feeds);
             list_followed_feeds.setAdapter(adapter);
 
-            //arrayOfFeeds.add(new Feed("Kirti Karande","2 hours ago","Such a cute ..... I dont know what to call it. ;)","208 Likes 300 Comments"));
-            //arrayOfFeeds.add(new Feed("Kirti Karande","2 hours ago","Such a cute ..... I dont know what to call it. ;)","208 Likes 300 Comments"));
-            //arrayOfFeeds.add(new Feed("Kirti Karande","2 hours ago","Such a cute ..... I dont know what to call it. ;)","208 Likes 300 Comments"));
+
+
+
+
+
             new DownloadFollowedFeeds().execute();
             return rootView;
         }
@@ -339,6 +372,73 @@ public class MainActivity extends AppCompatActivity {
                                        // Log.i("TAG", String.valueOf(arrayOfFeeds.size()));
                                         adapter = new FeedAdapter(thisActivityContext,arrayOfFeeds);
                                         list_followed_feeds.setAdapter(adapter);
+                                    } catch (Exception e)
+                                    {
+                                    }
+
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    NetworkResponse networkResponse = error.networkResponse;
+                                    if (networkResponse != null && networkResponse.statusCode == 422) {
+                                        Log.i("TAG", networkResponse.headers.toString());
+
+                                    }
+                                }
+                            }) {
+                        @Override
+                        public Map<String, String> getHeaders() throws AuthFailureError {
+                            HashMap<String, String> headers = new HashMap<String, String>();
+                            headers.put("Content-Type", "application/json; charset=utf-8");
+                            //  headers.put("User-agent", "My useragent");
+                            return headers;
+                        }
+
+                    };
+                    // Access the RequestQueue through your singleton class.
+
+                    MySingleton.getInstance(thisActivityContext).addToRequestQueue(jsObjRequest);
+
+
+                } catch (Exception e) {
+                }
+
+                return null;
+            }
+
+
+            protected void onPostExecute(Void result) {
+                super.onPostExecute(result);
+                Log.i("TAG", "in....");
+
+
+            }
+        }
+        public  static class LikeFeed extends AsyncTask<String, Void,Void> {
+
+
+            @Override
+            protected Void doInBackground(String... fid) {
+                try {
+
+                    //String url = "http://api.petoye.com/conversations/"+globalVariable.getUid()+"/all";
+                    String url = "http://api.petoye.com/feeds/"+fid[0]+"/like";
+                    Map<String, String> jsonParams = new HashMap<String, String>();
+                    Log.i("TAG",fid[0]);
+                    //jsonParams.put("uid",uid);
+                    //for debugging purpose.......................///change
+                    jsonParams.put("uid","1");
+                    JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.POST, url,new JSONObject(jsonParams),
+                            new Response.Listener<JSONObject>() {
+
+                                @Override
+                                public void onResponse(JSONObject response) {
+
+                                    Log.i("TAG", response.toString());
+                                    try {
+                                        Toast.makeText(thisActivityContext,"LIKED",Toast.LENGTH_LONG).show();
                                     } catch (Exception e)
                                     {
                                     }
