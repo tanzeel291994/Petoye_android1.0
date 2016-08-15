@@ -77,7 +77,10 @@ public class LetterboxScreen extends AppCompatActivity {
 
     public  void onClickHomeButton(View view) {}
 
-    public void onClickAddFriendsButton(View view) {}
+    public void onClickAddFriendsButton(View view) {
+        Intent intent=new Intent(this,DiscoverScreen.class);
+        startActivity(intent);
+    }
 
     public void onClickPlusButton(View view) {}
 

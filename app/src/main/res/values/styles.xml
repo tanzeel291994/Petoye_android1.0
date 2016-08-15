@@ -132,6 +132,18 @@
         <item name="android:textSize">@dimen/text_view_FEA83333C5424DE8BA52770FD27EDF41_size</item>
         <item name="android:textStyle">normal</item>
     </style>
+    <style name="follow_button_style" parent="android:Widget.TextView">
+        <item name="fontPath">fonts/${FONT_FILE}</item>
+        <item name="android:textColor">@color/rich_electric_blue</item>
+        <item name="android:textSize">@dimen/text_view_D737D74870D24C318F03F99EAE0E4888_size</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+    <style name="following_button_style" parent="android:Widget.TextView">
+        <item name="fontPath">fonts/${FONT_FILE}</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_view_D737D74870D24C318F03F99EAE0E4888_size</item>
+        <item name="android:textStyle">normal</item>
+    </style>
     <style name="text_view_1BCB2F10873D467C941F892D92765D13_style" parent="android:Widget.TextView">
         <item name="fontPath">fonts/${FONT_FILE}</item>
         <item name="android:textColor">@color/silver</item>
