@@ -144,6 +144,14 @@
         <item name="android:textSize">@dimen/text_view_D737D74870D24C318F03F99EAE0E4888_size</item>
         <item name="android:textStyle">normal</item>
     </style>
+    <style name="Theme.AppCompat.Translucent" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:background">#00000000</item> <!-- Or any transparency or color you need -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation</item>
+    </style>
     <style name="text_view_1BCB2F10873D467C941F892D92765D13_style" parent="android:Widget.TextView">
         <item name="fontPath">fonts/${FONT_FILE}</item>
         <item name="android:textColor">@color/silver</item>

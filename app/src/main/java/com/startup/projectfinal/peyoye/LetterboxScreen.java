@@ -53,6 +53,7 @@ public class LetterboxScreen extends AppCompatActivity {
     private ViewPager mViewPager;
     GlobalClass globalVariable;
     // static String uid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,15 +68,15 @@ public class LetterboxScreen extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-
-
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
         //new DownloadAllConversation().execute();
     }
 
-
-    public  void onClickHomeButton(View view) {}
+    public  void onClickHomeButton(View view) {
+        Intent intent=new Intent(this,MainActivity.class);
+        startActivity(intent);
+    }
 
     public void onClickAddFriendsButton(View view) {
         Intent intent=new Intent(this,DiscoverScreen.class);
@@ -93,10 +94,8 @@ public class LetterboxScreen extends AppCompatActivity {
 
     public void goBack(View view)
     {
-        Intent i=new Intent(this, MainActivity.class);
-        startActivity(i);
+        finish();
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -111,12 +110,10 @@ public class LetterboxScreen extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 //==============================================================================================================

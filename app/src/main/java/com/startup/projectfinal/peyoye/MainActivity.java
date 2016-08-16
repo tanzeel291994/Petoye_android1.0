@@ -27,6 +27,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -69,11 +70,10 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(mViewPager);
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        //getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
@@ -83,20 +83,30 @@ public class MainActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
-    public  void onClickHomeButton(View view) {}
+    public void openHamburgerMenu(View view){
+        openOptionsMenu();
+    }
 
-    public void onClickAddFriendsButton(View view) {   }
+    public void onClickSearchButton(View view){}
 
-    public void onClickPlusButton(View view) {}
+    public  void onClickHomeButton(View view) {
+        Intent i=new Intent(this,MainActivity.class);
+        startActivity(i);
+    }
+
+    public void onClickAddFriendsButton(View view) {
+        Intent intent=new Intent(this,DiscoverScreen.class);
+        startActivity(intent);
+    }
+
+    public void onClickPlusButton(View view) {    }
 
     public void onClickNotificationButton(View view) {
         Intent i=new Intent(this, LetterboxScreen.class);
@@ -104,15 +114,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickMyProfileButton(View view) {}
-
-    /*public void GotoCommentsPage(View view)
-    {
-        Intent i=new Intent(this, CommentScreen.class);
-        startActivity(i);
-    }
-    public  void  onLikeClicked(View view){}*/
-    public void onShareviaClicked(View view){}
-
 
 //============================================================================================================
     /**
@@ -167,22 +168,22 @@ public class MainActivity extends AppCompatActivity {
 
         }
         public Feed(JSONObject object)
-        {try
         {
-            // this.sender_name = object.getJSONObject("user").getString("username");
-            this.img_description = object.getString("message");
-            this.user_name=object.getJSONObject("user").getString("username");
-            this.author_id=object.getJSONObject("user").getString("id");
-            this.like_count = object.getString("like_count");
-            this.comment_count = object.getString("comment_count");
-            this.timestamp = object.getString("created_at");
-            this.feed_id=object.getString("id");
-            //Log.i("TAG",feed_id);
-            //Log.i("TAG", comment_msg);
-        } catch (JSONException e)
-        {
-            e.printStackTrace();
-        }
+            try
+            {
+                // this.sender_name = object.getJSONObject("user").getString("username");
+                this.img_description = object.getString("message");
+                this.user_name=object.getJSONObject("user").getString("username");
+                this.author_id=object.getJSONObject("user").getString("id");
+                this.like_count = object.getString("like_count");
+                this.comment_count = object.getString("comment_count");
+                this.timestamp = object.getString("created_at");
+                this.feed_id=object.getString("id");
+                //Log.i("TAG",feed_id);
+                //Log.i("TAG", comment_msg);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
 
         // Factory method to convert an array of JSON objects into a list of objects
@@ -203,6 +204,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static class FeedAdapter extends ArrayAdapter<Feed> {
 
+        Context thisActivityContext;
         // View lookup cache
         private class ViewHolder {
             ImageView feed_img;
@@ -211,6 +213,7 @@ public class MainActivity extends AppCompatActivity {
 
         public FeedAdapter(Context context, ArrayList<Feed> feeds) {
             super(context, R.layout.item_feed, feeds);
+            thisActivityContext=context;
         }
 
         @Override
@@ -231,7 +234,6 @@ public class MainActivity extends AppCompatActivity {
                 viewHolder.timestamp=(TextView)convertView.findViewById(R.id.timestamp);
                 viewHolder.img_description=(TextView)convertView.findViewById(R.id.img_description);
                 viewHolder.like_comment_count=(TextView)convertView.findViewById(R.id.likes_comments_count);
-
                 // Cache the viewHolder object inside the fresh view
                 convertView.setTag(viewHolder);
             } else {
@@ -249,17 +251,22 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     //feed.like_count=feed.like_count+1;
                     new FollowedFragment.LikeFeed().execute(feed.feed_id);
-
-
                 }
             });
-           Button btn_comment_feed = (Button) convertView.findViewById(R.id.btn_comments_feed);
+            Button btn_comment_feed = (Button) convertView.findViewById(R.id.btn_comments_feed);
             btn_comment_feed.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     Intent i = new Intent(FollowedFragment.thisActivityContext, CommentScreen.class);
                     i.putExtra("feed_id",feed.feed_id);
                     FollowedFragment.thisActivityContext.startActivity(i);
-
+                }
+            });
+            ImageButton report_button=(ImageButton)convertView.findViewById(R.id.report_button);
+            report_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i=new Intent(thisActivityContext,PostOptions.class);
+                    thisActivityContext.startActivity(i);
                 }
             });
             // Return the completed view to render on screen
@@ -287,15 +294,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_trending_feeds, container, false);
 
             arrayOfFeeds=new ArrayList<Feed>();
 
             adapter=new FeedAdapter(this.getActivity(),arrayOfFeeds);
-
-
 
             list_trending_feeds=(ListView)rootView.findViewById(R.id.list_trending_feeds);
             list_trending_feeds.setAdapter(adapter);
@@ -313,9 +317,10 @@ public class MainActivity extends AppCompatActivity {
         ListView list_followed_feeds;
         ArrayAdapter adapter;
         ArrayList<Feed> arrayOfFeeds;
-       static Context thisActivityContext;
+        static Context thisActivityContext;
         GlobalClass globalClass;
         String uid;
+
         public FollowedFragment() { }
 
         public static FollowedFragment newInstance()
@@ -323,11 +328,13 @@ public class MainActivity extends AppCompatActivity {
             FollowedFragment fragment = new FollowedFragment();
             return fragment;
         }
+
         public void startact()
         {
             Intent i = new Intent(FollowedFragment.thisActivityContext, CommentScreen.class);
             startActivity(i);
         }
+
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
@@ -343,16 +350,11 @@ public class MainActivity extends AppCompatActivity {
             list_followed_feeds=(ListView)rootView.findViewById(R.id.list_followed_feeds);
             list_followed_feeds.setAdapter(adapter);
 
-
-
-
-
-
             new DownloadFollowedFeeds().execute();
             return rootView;
         }
-        public class DownloadFollowedFeeds extends AsyncTask<Void, Void,Void> {
 
+        public class DownloadFollowedFeeds extends AsyncTask<Void, Void,Void> {
 
             @Override
             protected Void doInBackground(Void... params) {
@@ -398,9 +400,7 @@ public class MainActivity extends AppCompatActivity {
 
                     };
                     // Access the RequestQueue through your singleton class.
-
                     MySingleton.getInstance(thisActivityContext).addToRequestQueue(jsObjRequest);
-
 
                 } catch (Exception e) {
                 }
@@ -408,21 +408,17 @@ public class MainActivity extends AppCompatActivity {
                 return null;
             }
 
-
             protected void onPostExecute(Void result) {
                 super.onPostExecute(result);
                 Log.i("TAG", "in....");
-
-
             }
         }
-        public  static class LikeFeed extends AsyncTask<String, Void,Void> {
 
+        public  static class LikeFeed extends AsyncTask<String, Void,Void> {
 
             @Override
             protected Void doInBackground(String... fid) {
                 try {
-
                     //String url = "http://api.petoye.com/conversations/"+globalVariable.getUid()+"/all";
                     String url = "http://api.petoye.com/feeds/"+fid[0]+"/like";
                     Map<String, String> jsonParams = new HashMap<String, String>();
@@ -465,22 +461,15 @@ public class MainActivity extends AppCompatActivity {
 
                     };
                     // Access the RequestQueue through your singleton class.
-
                     MySingleton.getInstance(thisActivityContext).addToRequestQueue(jsObjRequest);
-
-
                 } catch (Exception e) {
                 }
-
                 return null;
             }
-
 
             protected void onPostExecute(Void result) {
                 super.onPostExecute(result);
                 Log.i("TAG", "in....");
-
-
             }
         }
     }

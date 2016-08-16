@@ -27,7 +27,6 @@ public class SplashScreen extends Activity {
                     {
                         // if user is logging in for first time.
                         intent = new Intent(SplashScreen.this,LaunchScreen.class);
-
                     }
                     else
                     {
