@@ -84,8 +84,10 @@ public class LoginScreen extends Activity {
 
                         //Log.i("TAG", response.toString());
                         try{
+                            globalVariable.setUid(response.getString("id"));
                             isAuthorized=true;
-                        globalVariable.setUid(response.getString("id"));}
+
+                        }
                         catch(Exception e){
                         Log.i("TAG",e.toString());}
                     }
@@ -111,14 +113,13 @@ public class LoginScreen extends Activity {
         };
 // Access the RequestQueue through your singleton class.
         MySingleton.getInstance(this).addToRequestQueue(jsObjRequest);
-
         if(isAuthorized) {
-            Intent i = new Intent(this, MainActivity.class);
+            Intent i = new Intent(globalVariable, MainActivity.class);
             startActivity(i);
         }
         else
         {
-            AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+            AlertDialog alertDialog = new AlertDialog.Builder(globalVariable).create();
             alertDialog.setTitle("Login");
             alertDialog.setMessage("wrong credentials");
             alertDialog.setButton(DialogInterface.BUTTON_NEUTRAL,"OK", new DialogInterface.OnClickListener() {
@@ -128,6 +129,7 @@ public class LoginScreen extends Activity {
             });
             alertDialog.show();
         }
+
     }
 
 }
