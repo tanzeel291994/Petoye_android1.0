@@ -42,24 +42,29 @@ public class CommentScreen extends Activity {
     CommentAdapter adapter;
     GlobalClass globalVariable;
     String feed_id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comment_screen);
+
+        thisActivityContext=this.getApplicationContext();
+
         feed_id=getIntent().getStringExtra("feed_id");
+
         arrayOfComments = new ArrayList<Comment>();
         adapter = new CommentAdapter(this, arrayOfComments);
-        thisActivityContext=this.getApplicationContext();
+
         globalVariable=(GlobalClass) getApplicationContext();
        /* JSONArray jsonArray = new JSONArray();
         ArrayList<Comment> comments = Comment.fromJson(jsonArray);
 
         adapter.addAll(comments);
         */
-//start an async task.......
+        //start an async task.......
 
         new DownloadComments().execute(feed_id);
-       //arrayOfComments.add(new Comment("Kirti Karande", "It's 2.01 AM "));
+        //arrayOfComments.add(new Comment("Kirti Karande", "It's 2.01 AM "));
         //arrayOfComments.add(new Comment("Kirti Karande", "It's 2.02 AM "));
         //arrayOfComments.add(new Comment("Kirti Karande", "It's 2.03 AM "));
 
@@ -114,21 +119,21 @@ public class CommentScreen extends Activity {
                 }
 
             };
-// Access the RequestQueue through your singleton class.
+            // Access the RequestQueue through your singleton class.
             MySingleton.getInstance(this).addToRequestQueue(jsObjRequest);
 
             ((EditText) findViewById(R.id.added_comment_msg)).setText("");
         }
     }
+
+    //when back button is pressed.
     public void goBack(View view)
     {
-        Intent i=new Intent(this, MainActivity.class);
-        startActivity(i);
+        finish();
     }
+
     public class DownloadComments extends AsyncTask<String, Void,Void>
     {
-
-
         @Override
         protected Void doInBackground(String... fid)
         {
@@ -163,6 +168,7 @@ public class CommentScreen extends Activity {
                                 }
                             }
                         }){
+
                     @Override
                     public Map<String, String> getHeaders() throws AuthFailureError {
                         HashMap<String, String> headers = new HashMap<String, String>();
@@ -170,26 +176,19 @@ public class CommentScreen extends Activity {
                         //  headers.put("User-agent", "My useragent");
                         return headers;
                     }
-
                 };
-// Access the RequestQueue through your singleton class.
 
+                // Access the RequestQueue through your singleton class.
                 MySingleton.getInstance(thisActivityContext).addToRequestQueue(jsObjRequest);
-
-
             }
             catch (Exception e){    }
 
             return  null;
         }
 
-
-
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
             Log.i("TAG","in....");
-
-
         }
     }
 }

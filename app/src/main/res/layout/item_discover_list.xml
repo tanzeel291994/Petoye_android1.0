@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="match_parent"
+    android:padding="5dp">
+    <TableRow>
+    <ImageView
+        android:id="@+id/img_user"
+        android:layout_margin="5dp"
+        android:src="@drawable/users"
+        android:layout_width="0dp"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="0.2"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_weight="0.5"
+        android:layout_height="wrap_content">
+        <TextView
+            style="@style/text_view_41E46FA6584C495C9CBBCF3DD2ED17FB_style"
+            android:id="@+id/username"
+            android:text="Ameya Vichare"
+            android:layout_margin="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                style="@style/text_view_1BCB2F10873D467C941F892D92765D13_style"
+                android:id="@+id/user_category"
+                android:text="Pet Owner"
+                android:layout_margin="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                style="@style/text_view_1BCB2F10873D467C941F892D92765D13_style"
+                android:text="-"
+                android:layout_margin="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                style="@style/text_view_1BCB2F10873D467C941F892D92765D13_style"
+                android:id="@+id/breed"
+                android:layout_margin="2dp"
+                android:text="Pug"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <Button
+        style="@style/follow_button_style"
+        android:id="@+id/follow_button"
+        android:onClick="onClickFollowButton"
+        android:background="@drawable/follow_button"
+        android:text="Follow"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="0.3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+    </TableRow>
+    <View
+        android:background="@color/gainsboro"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"/>
+</TableLayout>

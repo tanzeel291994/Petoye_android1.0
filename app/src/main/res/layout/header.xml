@@ -8,7 +8,6 @@
     android:id="@+id/header">
 
     <ImageButton
-        android:clickable="false"
         android:id="@+id/btnHamburger"
         android:layout_width="0dp"
         android:layout_weight="0.1"
@@ -17,7 +16,7 @@
         android:src="@drawable/ham_button"
         android:background="@color/medium_turquoise"
         android:layout_margin="10dp"
-        android:onClick="openDrawer" />
+        android:onClick="openHamburgerMenu" />
 
     <ImageView
         android:layout_width="0dp"
@@ -27,15 +26,14 @@
         android:src="@drawable/petoyename"
         android:layout_margin="10dp"       />
 
-    <Button
-        android:clickable="false"
-        android:text="comment"
+    <ImageButton
+        android:id="@+id/search_button"
         android:layout_width="0dp"
-        android:layout_weight="0.3"
+        android:layout_weight="0.1"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:src="@drawable/ham_button"
         android:background="@color/medium_turquoise"
         android:layout_margin="10dp"
-        android:onClick="GotoCommentsPage"/>
+        android:onClick="onClickSearchButton" />
 </LinearLayout>

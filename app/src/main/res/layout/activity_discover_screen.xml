@@ -2,10 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.startup.projectfinal.peyoye.LetterboxScreen"
-    android:id="@+id/main_content"
+    android:id="@+id/activity_discover_screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.startup.projectfinal.peyoye.DiscoverScreen"
     android:orientation="vertical"
     android:fitsSystemWindows="true">
 
@@ -28,7 +29,7 @@
             style="@style/text_view_8A64EBE0E29E4BF9B539AB355607F8E9_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Letterbox"
+            android:text="Discover"
             android:layout_weight="0.9"
             android:textAlignment="center"
             android:paddingBottom="20dp"
@@ -36,26 +37,12 @@
             />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_above="@+id/footer"
+    <ListView
+        android:divider="@color/white"
         android:layout_below="@+id/header"
-        android:orientation="vertical"
+        android:id="@+id/list_discovered_users"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent">
-
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tabs"
-            style="@style/TabNameStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <android.support.v4.view.ViewPager
-            android:id="@+id/container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-    </LinearLayout>
-
+        android:layout_height="wrap_content"/>
 
     <!---  =============================    footer  =============================== -->
     <View
