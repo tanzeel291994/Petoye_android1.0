@@ -3,11 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/gainsboro">
-    <ListView
+    android:background="@color/gainsboro"
+    tools:context="com.startup.projectfinal.peyoye.ProfileScreen$PostsFragment">
+<ListView
         android:dividerHeight="5dp"
         android:divider="@color/gainsboro"
-        android:id="@+id/list_nearby_pets_feeds"
+        android:id="@+id/list_user_feeds"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>

@@ -21,6 +21,11 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="PostDescriptionText" parent="Widget.AppCompat.EditText">
+        <item name="android:padding">20dp</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:textSize">@dimen/abc_text_size_subhead_material</item>
+    </style>
 
     <style name="text_view_942B68EBD83A430C8442B90E28E8BE6F_style" parent="android:Widget.TextView">
         <item name="fontPath">fonts/${FONT_FILE}</item>
@@ -106,6 +111,12 @@
         <item name="android:textSize">@dimen/text_view_CBC55B405CEE442394C7FC1F187C60FE_size</item>
         <item name="android:textStyle">normal</item>
     </style>
+    <style name="text_view_827E62D5DAD843F9AA3DFD5935023428_style" parent="android:Widget.TextView">
+        <item name="fontPath">fonts/${FONT_FILE}</item>
+        <item name="android:textColor">@color/smoky_black2</item>
+        <item name="android:textSize">@dimen/text_view_827E62D5DAD843F9AA3DFD5935023428_size</item>
+        <item name="android:textStyle">normal</item>
+    </style>
     <style name="text_view_A444B11983E44DCCA3641B2B56512B3D_style" parent="android:Widget.TextView">
         <item name="fontPath">fonts/${FONT_FILE}</item>
         <item name="android:textColor">@color/black</item>
@@ -124,6 +135,12 @@
         <item name="fontPath">fonts/${FONT_FILE}</item>
         <item name="android:textColor">@color/black2</item>
         <item name="android:textSize">@dimen/text_view_26D7B73CA3994A6BBCDD13564FFC15D6_size</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+    <style name="text_view_97C359870D95450A88B303D7F621BEA1_style" parent="android:Widget.TextView">
+        <item name="fontPath">fonts/${FONT_FILE}</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_view_97C359870D95450A88B303D7F621BEA1_size</item>
         <item name="android:textStyle">normal</item>
     </style>
     <style name="text_view_FEA83333C5424DE8BA52770FD27EDF41_style" parent="android:Widget.TextView">
@@ -190,5 +207,4 @@
         <item name="android:textSize">20.0sp</item>
         <item name="android:textStyle">normal</item>
     </style>
-
 </resources>

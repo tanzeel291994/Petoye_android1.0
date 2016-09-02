@@ -74,23 +74,33 @@ public class LetterboxScreen extends AppCompatActivity {
     }
 
     public  void onClickHomeButton(View view) {
-        Intent intent=new Intent(this,MainActivity.class);
-        startActivity(intent);
+        Intent i=new Intent(this,MainActivity.class);
+        startActivity(i);
+        finish();
     }
 
     public void onClickAddFriendsButton(View view) {
         Intent intent=new Intent(this,DiscoverScreen.class);
         startActivity(intent);
+        finish();
     }
 
-    public void onClickPlusButton(View view) {}
+    public void onClickPlusButton(View view) {
+        Intent i=new Intent(this,PlusButtonMenuScreen.class);
+        startActivity(i);
+    }
 
     public void onClickNotificationButton(View view) {
         Intent i=new Intent(this, LetterboxScreen.class);
         startActivity(i);
+        finish();
     }
 
-    public void onClickMyProfileButton(View view) {}
+    public void onClickMyProfileButton(View view) {
+        Intent i=new Intent(this, ProfileScreen.class);
+        startActivity(i);
+        finish();
+    }
 
     public void goBack(View view)
     {

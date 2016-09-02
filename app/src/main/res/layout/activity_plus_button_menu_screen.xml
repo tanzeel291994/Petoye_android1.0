@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_plus_button_menu_screen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.startup.projectfinal.peyoye.PlusButtonMenuScreen">
+    <View
+        android:background="#8853D3E3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/plusmenu"/>
+    <GridLayout
+        android:layout_marginBottom="2dp"
+        android:background="@color/white"
+        android:layout_above="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:rowCount="2"
+        android:id="@+id/plusmenu"
+        android:orientation="horizontal" >
+        <Button android:id="@+id/btnSharePost"
+            style="@style/text_view_5D0FA4EA4FA544C69B077C5EB75680D1_style"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_rowWeight="1"
+            android:layout_margin="10dp"
+            android:text="Share a Post"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:background="@color/white"
+            android:drawableTop="@drawable/write_a_post_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            style="@style/text_view_5D0FA4EA4FA544C69B077C5EB75680D1_style"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_rowWeight="1"
+            android:layout_margin="10dp"
+            android:layout_column="0"
+            android:layout_row="1"
+            android:background="@color/white"
+            android:text="Walk-in Mode"
+            android:drawableTop="@drawable/walk_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            style="@style/text_view_5D0FA4EA4FA544C69B077C5EB75680D1_style"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal|bottom"
+            android:layout_rowWeight="1"
+            android:layout_margin="10dp"
+            android:layout_column="1"
+            android:layout_row="0"
+            android:background="@color/white"
+            android:text="Adoption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            style="@style/text_view_5D0FA4EA4FA544C69B077C5EB75680D1_style"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_rowWeight="1"
+            android:layout_margin="10dp"
+            android:layout_column="1"
+            android:background="@color/white"
+            android:layout_row="1"
+            android:text="Medical Records"
+            android:drawableTop="@drawable/medical_records"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:background="@drawable/rectangle"
+            android:layout_column="2"
+            android:layout_gravity="fill"
+            android:layout_width="0dp"
+            android:layout_row="0"
+            android:weightSum="1"
+            android:layout_rowSpan="2" >
+            <TextView
+                style="@style/text_view_2CBF0717FF594FE0910A46F407508655_style"
+                android:text="Look into this space for new features in future"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:ellipsize="none"
+                android:maxLines="10"
+                android:scrollHorizontally="false"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_height="fill_parent"  />
+        </LinearLayout>
+    </GridLayout>
+
+    <!---  =============================    footer  =============================== -->
+    <View
+        android:layout_above="@+id/footer"
+        android:background="@color/gainsboro"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"/>
+    <LinearLayout
+        android:id="@+id/footer"
+        android:padding="5dp"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/home"
+            android:layout_gravity="center"
+            android:layout_weight="0.2"
+            android:background="@color/white"
+            android:onClick="onClickHomeButton" />
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:src="@drawable/users"
+            android:background="@color/white"
+            android:onClick="onClickAddFriendsButton" />
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:src="@drawable/plus_button_x"
+            android:background="@color/white"
+            android:onClick="onClickPlusButton"/>
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:src="@drawable/notif"
+            android:background="@color/white"
+            android:onClick="onClickNotificationButton"/>
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="0.2"
+            android:layout_height="wrap_content"
+            android:src="@drawable/my_profile"
+            android:background="@color/white"
+            android:onClick="onClickMyProfileButton" />
+    </LinearLayout>
+</RelativeLayout>

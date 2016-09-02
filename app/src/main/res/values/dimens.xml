@@ -17,8 +17,10 @@
     <dimen name="text_view_C63846713CDD41F4BE0581ADC9AD7345_size">16.8sp</dimen>
     <dimen name="text_view_41E46FA6584C495C9CBBCF3DD2ED17FB_size">25.52sp</dimen>
     <dimen name="text_view_A444B11983E44DCCA3641B2B56512B3D_size">20.88sp</dimen>
+    <dimen name="text_view_827E62D5DAD843F9AA3DFD5935023428_size">18.0sp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
+    <dimen name="text_view_97C359870D95450A88B303D7F621BEA1_size">16.6sp</dimen>
     <dimen name="text_view_D737D74870D24C318F03F99EAE0E4888_size">14.0sp</dimen>
     <dimen name="text_view_CBC55B405CEE442394C7FC1F187C60FE_size">20.88sp</dimen>
     <dimen name="text_view_1BCB2F10873D467C941F892D92765D13_size">20.0448sp</dimen>

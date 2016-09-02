@@ -28,7 +28,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
@@ -120,16 +119,9 @@ public class BasicInfo extends Activity implements LocationListener {
 
     public void onClickDoneButton(View view)
     {
-
-
-            alertmsg="";
+        alertmsg="";
         username=((EditText)findViewById(R.id.username)).getText().toString();
         // push the strings username , user_category, pet_category, breed to database.
-
-        Toast.makeText(this,"Username : "+username,Toast.LENGTH_LONG).show();
-        Toast.makeText(this,"User Category : "+user_category,Toast.LENGTH_LONG).show();
-        Toast.makeText(this," Pet Category : "+pet_category,Toast.LENGTH_LONG).show();
-        Toast.makeText(this," Breed : "+breed,Toast.LENGTH_LONG).show();
 
         if(username.equals("")|| pet_category.equals("-- Select --") || breed.equals("-- Select --") || user_category.equals("-- Select --"))
             displayerror=true;
@@ -207,7 +199,7 @@ public class BasicInfo extends Activity implements LocationListener {
 
     @Override
     public void onLocationChanged(Location location) {
-latitude=(float)location.getLatitude();
+        latitude=(float)location.getLatitude();
         longitude=(float)location.getLongitude();
     }
 

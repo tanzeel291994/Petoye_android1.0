@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_write_post_screen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.startup.projectfinal.peyoye.WritePostScreen">
+
+<!-- ================header======================= -->
+    <LinearLayout
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/header"
+        android:background="@color/medium_turquoise" >
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:background="@color/medium_turquoise"
+            android:padding="5dp"
+            android:layout_weight="0.1"
+            android:src="@drawable/back"
+            android:onClick="goBack"/>
+        <TextView
+            style="@style/text_view_8A64EBE0E29E4BF9B539AB355607F8E9_style"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Share a post"
+            android:layout_weight="0.9"
+            android:textAlignment="center"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"  />
+    </LinearLayout>
+<!-- =============== content =============== -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView  android:id="@+id/img_user"
+                    android:background="@color/timberwolf"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="0.2"
+                    android:src="@drawable/petoye_logo2"/>
+                <EditText   android:id="@+id/post_content"
+                    android:background="#00000000"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:minLines="3"
+                    android:padding="5dp"
+                    android:gravity="left|top"
+                    android:hint="What is your furry friend up to ?"/>
+            </LinearLayout>
+            <FrameLayout    android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+ <!-- ============== footer ================ -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageButton    android:id="@+id/btngoogleplus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:src="@drawable/plus_button"/>
+            <ImageButton    android:id="@+id/btnfb"
+                android:layout_width="0dp"
+                android:layout_weight="0.1"
+                android:layout_height="wrap_content"
+                android:src="@drawable/plus_button"/>
+            <ImageButton    android:id="@+id/btntwitter"
+                android:layout_width="0dp"
+                android:layout_weight="0.1"
+                android:layout_height="wrap_content"
+                android:src="@drawable/plus_button"/>
+            <ImageButton    android:id="@+id/btninsta"
+                android:layout_width="0dp"
+                android:layout_weight="0.1"
+                android:layout_height="wrap_content"
+                android:src="@drawable/plus_button"/>
+            <Button
+                android:text="Share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <View
+            android:background="@color/manatee"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <ImageButton
+            android:background="@color/white"
+            android:src="@drawable/camera_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:onClick="selectMedia"/>
+        <View
+            android:background="@color/manatee"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+    </LinearLayout>
+</RelativeLayout>
