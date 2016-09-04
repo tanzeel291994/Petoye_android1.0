@@ -17,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 
 import org.json.JSONObject;
 
@@ -34,6 +35,7 @@ public class LoginScreen extends Activity {
         globalVariable=(GlobalClass) getApplicationContext();
         isAuthorized=false;
         FacebookSdk.sdkInitialize(getApplicationContext());
+       // AppEventsLogger.activateApp(this);
         setContentView(R.layout.activity_login_screen);
 
        // email=((EditText)findViewById(R.id.etLoginEmail)).getText().toString();
@@ -114,12 +116,12 @@ public class LoginScreen extends Activity {
 // Access the RequestQueue through your singleton class.
         MySingleton.getInstance(this).addToRequestQueue(jsObjRequest);
         if(isAuthorized) {
-            Intent i = new Intent(globalVariable, MainActivity.class);
+            Intent i = new Intent(this, MainActivity.class);
             startActivity(i);
         }
         else
         {
-            AlertDialog alertDialog = new AlertDialog.Builder(globalVariable).create();
+            AlertDialog alertDialog = new AlertDialog.Builder(this).create();
             alertDialog.setTitle("Login");
             alertDialog.setMessage("wrong credentials");
             alertDialog.setButton(DialogInterface.BUTTON_NEUTRAL,"OK", new DialogInterface.OnClickListener() {
