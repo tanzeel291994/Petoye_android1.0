@@ -6,5 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.startup.projectfinal.peyoye.ReportScreen">
-
+    <FrameLayout
+        android:id="@+id/report_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </FrameLayout>
 </RelativeLayout>

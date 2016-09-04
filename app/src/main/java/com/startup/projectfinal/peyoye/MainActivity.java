@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickSearchButton(View view){}
-
+//========================= footer ==========================================
     public  void onClickHomeButton(View view) {
         Intent i=new Intent(this,MainActivity.class);
         startActivity(i);
@@ -106,14 +106,20 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void onClickPlusButton(View view) {    }
+    public void onClickPlusButton(View view) {
+        Intent i=new Intent(this,PlusButtonMenuScreen.class);
+        startActivity(i);
+    }
 
     public void onClickNotificationButton(View view) {
         Intent i=new Intent(this, LetterboxScreen.class);
         startActivity(i);
     }
 
-    public void onClickMyProfileButton(View view) {}
+    public void onClickMyProfileButton(View view) {
+        Intent i=new Intent(this, ProfileScreen.class);
+        startActivity(i);
+    }
 
 //============================================================================================================
     /**
@@ -273,7 +279,6 @@ public class MainActivity extends AppCompatActivity {
             // Return the completed view to render on screen
             return convertView;
         }
-
     }
 
 //=========================================================================================

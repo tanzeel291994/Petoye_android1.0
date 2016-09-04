@@ -2,6 +2,7 @@ package com.startup.projectfinal.peyoye;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
@@ -44,12 +45,31 @@ public class DiscoverScreen extends Activity {
         list_discovered_users.setAdapter(adapter);
 
     }
-    public void goBack(View view) {}
-    public void onClickHomeButton(View view){}
-    public void onClickAddFriendsButton(View view){}
-    public void onClickPlusButton(View view){}
-    public void onClickNotificationButton(View view){}
-    public void onClickMyProfileButton(View view){}
+    public void goBack(View view) { finish(); }
+    public void onClickHomeButton(View view){
+        Intent i=new Intent(this,MainActivity.class);
+        startActivity(i);
+        finish();
+    }
+    public void onClickAddFriendsButton(View view){
+        Intent intent=new Intent(this,DiscoverScreen.class);
+        startActivity(intent);
+        finish();
+    }
+    public void onClickPlusButton(View view){
+        Intent i=new Intent(this,PlusButtonMenuScreen.class);
+        startActivity(i);
+    }
+    public void onClickNotificationButton(View view){
+        Intent i=new Intent(this, LetterboxScreen.class);
+        startActivity(i);
+        finish();
+    }
+    public void onClickMyProfileButton(View view){
+        Intent i=new Intent(this, ProfileScreen.class);
+        startActivity(i);
+        finish();
+    }
 
     public static class DiscoverListItem {
         Image img;
