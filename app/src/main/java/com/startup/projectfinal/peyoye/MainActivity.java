@@ -228,7 +228,7 @@ public class MainActivity extends AppCompatActivity {
             final Feed feed = (Feed) getItem(position);
 
             // Check if an existing view is being reused, otherwise inflate the view
-            ViewHolder viewHolder; // view lookup cache stored in tag
+            final ViewHolder viewHolder; // view lookup cache stored in tag
             if (convertView == null) {
                 // If there's no view to re-use, inflate a brand new view for row
                 viewHolder = new ViewHolder();
@@ -256,6 +256,7 @@ public class MainActivity extends AppCompatActivity {
             btn_like_feed.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     //feed.like_count=feed.like_count+1;
+                    viewHolder.like_comment_count.setText(String.valueOf(Integer.parseInt(feed.like_count)+1)+" Likes "+ feed.comment_count+" Comments");
                     new FollowedFragment.LikeFeed().execute(feed.feed_id);
                 }
             });

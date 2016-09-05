@@ -17,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 
 import org.json.JSONObject;
 
@@ -34,6 +35,7 @@ public class LoginScreen extends Activity {
         globalVariable=(GlobalClass) getApplicationContext();
         isAuthorized=false;
         FacebookSdk.sdkInitialize(getApplicationContext());
+       // AppEventsLogger.activateApp(this);
         setContentView(R.layout.activity_login_screen);
 
        // email=((EditText)findViewById(R.id.etLoginEmail)).getText().toString();
@@ -84,8 +86,10 @@ public class LoginScreen extends Activity {
 
                         //Log.i("TAG", response.toString());
                         try{
+                            globalVariable.setUid(response.getString("id"));
                             isAuthorized=true;
-                        globalVariable.setUid(response.getString("id"));}
+
+                        }
                         catch(Exception e){
                         Log.i("TAG",e.toString());}
                     }
@@ -111,7 +115,6 @@ public class LoginScreen extends Activity {
         };
 // Access the RequestQueue through your singleton class.
         MySingleton.getInstance(this).addToRequestQueue(jsObjRequest);
-
         if(isAuthorized) {
             Intent i = new Intent(this, MainActivity.class);
             startActivity(i);
@@ -128,6 +131,7 @@ public class LoginScreen extends Activity {
             });
             alertDialog.show();
         }
+
     }
 
 }
