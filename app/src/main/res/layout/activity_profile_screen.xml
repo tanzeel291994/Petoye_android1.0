@@ -6,6 +6,95 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.startup.projectfinal.peyoye.ProfileScreen">
+    <ScrollView android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/footer">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <include layout="@layout/profile_header"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"/>
+
+            <LinearLayout   android:id="@+id/followcountdisplay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView   android:id="@+id/followingcount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="366"
+                    style="@style/text_view_A9AAE4037A894B809681844998D44BE8_style"
+                    android:layout_marginEnd="5dp"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="FOLLOWING"
+                    style="@style/text_view_A9AAE4037A894B809681844998D44BE8_style"
+                    android:layout_marginEnd="5dp"
+                    android:textColor="@color/ash_grey1"/>
+                <TextView   android:id="@+id/followercount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="328"
+                    style="@style/text_view_A9AAE4037A894B809681844998D44BE8_style"
+                    android:layout_marginEnd="5dp"
+                    android:textColor="@color/black"  />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="FOLLOWERS"
+                    style="@style/text_view_A9AAE4037A894B809681844998D44BE8_style"
+                    android:layout_marginEnd="5dp"
+                    android:textColor="@color/ash_grey1"  />
+            </LinearLayout>
+
+    <!--    ============== profile details ========================    -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                android:weightSum="1"
+                android:gravity="center" >
+                <Button android:id="@+id/petstory_tab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pet's Story"
+                    android:layout_margin="0dp"
+                    style="@style/profile_tab_style"
+                    android:onClick="diplayPetsStory"
+                    android:background="@drawable/btn_pet_story_selected"
+                    android:textColor="@color/white"/>
+                <Button android:id="@+id/pictures_tab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pictures"
+                    android:layout_margin="0dp"
+                    style="@style/profile_tab_style"
+                    android:background="@drawable/btn_pictures"
+                    android:onClick="displayPictures"/>
+                <Button android:id="@+id/posts_tab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Posts"
+                    android:layout_margin="0dp"
+                    style="@style/profile_tab_style"
+                    android:onClick="displayPosts"
+                    android:background="@drawable/btn_posts"/>
+            </LinearLayout>
+            <FrameLayout    android:id="@+id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"/>
+        </LinearLayout>
+    </ScrollView>
+
+<!--
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
@@ -13,32 +102,97 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:background="@color/white">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"    >
-            <LinearLayout android:id="@+id/profilecoverdisplay"
-                android:orientation="horizontal"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:background="@color/manatee" >
-                <ImageView android:id="@+id/profileimage1"
-                    android:layout_height="fill_parent"
-                    android:layout_width="0dp"
-                    android:layout_weight="0.5"
-                    android:src="@drawable/rectangle"/>
-                <ImageView android:id="@+id/profileimage2"
-                    android:layout_height="fill_parent"
-                    android:layout_width="0dp"
-                    android:layout_weight="0.5"
-                    android:src="@drawable/rectangle"/>
-            </LinearLayout>
+                android:layout_height="wrap_content">
+                <!- === ===== == == Cover photo ===    =   ==  = ->
+                <ImageView android:id="@+id/profilecoverdisplay"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:adjustViewBounds="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="80dp"
+                    android:src="@drawable/testimage1"/>
+                <LinearLayout
+                    android:layout_alignParentBottom="true"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:weightSum="1"
+                    android:gravity="bottom"
+                    android:layout_height="wrap_content">
+                    <com.github.siyamed.shapeimageview.RoundedImageView
+                        android:id="@+id/img_user"
+                        android:layout_width="160dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentBottom="true"
+                        android:src="@drawable/testimage2"
+                        app:siBorderWidth="1dp"
+                        app:siBorderColor="@color/manatee"
+                        app:siSquare="true"/>
+                    <LinearLayout
+                        android:gravity="bottom"
+                        android:layout_below="@id/profilecoverdisplay"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
+                        android:layout_height="wrap_content">
+                        <LinearLayout   android:id="@+id/usernamentype"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="start|top"
+                            android:layout_margin="5dp">
+                            <TextView   android:id="@+id/username"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Ameya Vichare"
+                                style="@style/text_view_41E46FA6584C495C9CBBCF3DD2ED17FB_style" />
+                            <TextView   android:id="@+id/user_category"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Pet Owner - Pug"
+                                style="@style/text_view_1BCB2F10873D467C941F892D92765D13_style" />
+                        </LinearLayout>
+
+                        <LinearLayout   android:id="@+id/follomsgslot"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.2"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_alignParentEnd="true"
+                            android:gravity="center">
+                            <Button android:id="@+id/follow_button"
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+                                android:text="Follow"
+                                style="@style/follow_button_style"
+                                android:layout_margin="5dp"
+                                android:background="@drawable/follow_button"
+                                android:onClick="onClickFollowButton"   />
+                            <ImageButton    android:id="@+id/btn_msg"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="#00000000"
+                                android:src="@drawable/msgbox"
+                                android:layout_margin="5dp"
+                                android:onClick="onClickMessageButton"   />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </RelativeLayout>
+
             <ImageView android:id="@+id/img_user"
                 android:layout_width="160dp"
                 android:layout_height="160dp"
-                android:background="@color/manatee"
-                android:layout_alignBottom="@+id/usernamentype" />
+                android:minWidth="100dp"
+                android:background="@color/manatee"/>
+
             <LinearLayout   android:id="@+id/usernamentype"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -83,68 +237,83 @@
                     android:layout_margin="5dp"
                     android:onClick="onClickMessageButton"   />
             </LinearLayout>
-            <LinearLayout   android:id="@+id/followcountdisplay"
+        </RelativeLayout>
+        <LinearLayout   android:id="@+id/followcountdisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true">
+            <TextView   android:id="@+id/followingcount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentStart="true"
-                android:layout_toStartOf="@+id/follomsgslot"
-                android:layout_below="@+id/img_user">
-                <TextView   android:id="@+id/followingcount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="366"
-                    style="@style/text_view_5D0FA4EA4FA544C69B077C5EB75680D1_style"
-                    android:layout_marginEnd="5dp"  />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="FOLLOWING"
-                    style="@style/text_view_CBC55B405CEE442394C7FC1F187C60FE_style"
-                    android:layout_marginEnd="5dp"  />
-                <TextView   android:id="@+id/followercount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="328"
-                    style="@style/text_view_5D0FA4EA4FA544C69B077C5EB75680D1_style"
-                    android:layout_marginEnd="5dp"  />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="FOLLOWERS"
-                    style="@style/text_view_CBC55B405CEE442394C7FC1F187C60FE_style"
-                    android:layout_marginEnd="5dp"  />
-            </LinearLayout>
-        </RelativeLayout>
-        <!-- profile description-->
+                android:text="366"
+                style="@style/text_view_A9AAE4037A894B809681844998D44BE8_style"
+                android:layout_marginEnd="5dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FOLLOWING"
+                style="@style/text_view_A9AAE4037A894B809681844998D44BE8_style"
+                android:layout_marginEnd="5dp"
+                android:textColor="@color/ash_grey1"/>
+            <TextView   android:id="@+id/followercount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="328"
+                style="@style/text_view_A9AAE4037A894B809681844998D44BE8_style"
+                android:layout_marginEnd="5dp"
+                android:textColor="@color/black"  />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FOLLOWERS"
+                style="@style/text_view_A9AAE4037A894B809681844998D44BE8_style"
+                android:layout_marginEnd="5dp"
+                android:textColor="@color/ash_grey1"  />
+        </LinearLayout>
+
+        <!- profile details
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:padding="5dp"
+            android:weightSum="1"
             android:gravity="center" >
-            <Button
+            <Button android:id="@+id/petstory_tab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Pet's Story"
-                android:onClick="diplayPetsStory"/>
-            <Button
+                android:layout_margin="0dp"
+                style="@style/profile_tab_style"
+                android:onClick="diplayPetsStory"
+                android:background="@drawable/btn_pet_story_selected"
+                android:textColor="@color/white"/>
+            <Button android:id="@+id/pictures_tab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Pictures"
+                android:layout_margin="0dp"
+                style="@style/profile_tab_style"
+                android:background="@drawable/btn_pictures"
                 android:onClick="displayPictures"/>
-            <Button
+            <Button android:id="@+id/posts_tab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Posts"
-                android:onClick="displayPosts"/>
+                android:layout_margin="0dp"
+                style="@style/profile_tab_style"
+                android:onClick="displayPosts"
+                android:background="@drawable/btn_posts"/>
         </LinearLayout>
         <FrameLayout    android:id="@+id/tabcontent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="fill_parent"/>
     </LinearLayout>
 </ScrollView>
-
+-->
     <!---  =============================    footer  =============================== -->
     <View
         android:layout_above="@+id/footer"

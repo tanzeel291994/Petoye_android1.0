@@ -15,7 +15,7 @@
     <dimen name="text_view_26D7B73CA3994A6BBCDD13564FFC15D6_size">20.48dp</dimen>
     <dimen name="text_view_F8E6230002AB49DBAA19EB2627C0E1DA_size">18.0sp</dimen>
     <dimen name="text_view_C63846713CDD41F4BE0581ADC9AD7345_size">16.8sp</dimen>
-    <dimen name="text_view_41E46FA6584C495C9CBBCF3DD2ED17FB_size">25.52sp</dimen>
+    <dimen name="text_view_41E46FA6584C495C9CBBCF3DD2ED17FB_size">20.52sp</dimen>
     <dimen name="text_view_A444B11983E44DCCA3641B2B56512B3D_size">20.88sp</dimen>
     <dimen name="text_view_827E62D5DAD843F9AA3DFD5935023428_size">18.0sp</dimen>
     <dimen name="fab_margin">16dp</dimen>

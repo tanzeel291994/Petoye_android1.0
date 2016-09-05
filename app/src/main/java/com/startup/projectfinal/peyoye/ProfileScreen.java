@@ -3,20 +3,25 @@ package com.startup.projectfinal.peyoye;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -28,16 +33,23 @@ public class ProfileScreen extends AppCompatActivity {
     FragmentTransaction ft;
     static String thisuser="Kirti Karande";
     static String user;
+    Button posts_tab,pictures_tab,petstory_tab;
+    static ScrollView scrollView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_screen);
+        scrollView=(ScrollView)findViewById(R.id.scrollView) ;
 
         user=getIntent().getStringExtra("username");
 
         TextView uname=(TextView)findViewById(R.id.username);
         uname.setText(user);
+
+        petstory_tab=(Button)findViewById(R.id.petstory_tab);
+        pictures_tab=(Button)findViewById(R.id.pictures_tab);
+        posts_tab=(Button)findViewById(R.id.posts_tab);
 
         frame = (FrameLayout) findViewById(R.id.tabcontent);
         fm = getSupportFragmentManager();
@@ -48,6 +60,13 @@ public class ProfileScreen extends AppCompatActivity {
     }
 
     public  void  diplayPetsStory(View view){
+        petstory_tab.setBackgroundResource(R.drawable.btn_pet_story_selected);
+        petstory_tab.setTextColor(Color.parseColor("#FFFFFF"));
+        pictures_tab.setBackgroundResource(R.drawable.btn_pictures);
+        pictures_tab.setTextColor(Color.parseColor("#1A94CB"));
+        posts_tab.setBackgroundResource(R.drawable.btn_posts);
+        posts_tab.setTextColor(Color.parseColor("#1A94CB"));
+
         fm = getSupportFragmentManager();
         ft = fm.beginTransaction();
         PetStoryFragment petStoryFragment=new PetStoryFragment();
@@ -56,6 +75,13 @@ public class ProfileScreen extends AppCompatActivity {
     }
 
     public void displayPictures(View view){
+        petstory_tab.setBackgroundResource(R.drawable.btn_pet_story);
+        petstory_tab.setTextColor(Color.parseColor("#1A94CB"));
+        pictures_tab.setBackgroundResource(R.drawable.btn_pictures_selected);
+        pictures_tab.setTextColor(Color.parseColor("#FFFFFF"));
+        posts_tab.setBackgroundResource(R.drawable.btn_posts);
+        posts_tab.setTextColor(Color.parseColor("#1A94CB"));
+
         fm = getSupportFragmentManager();
         ft = fm.beginTransaction();
         PicturesFragment picturesFragment=new PicturesFragment();
@@ -64,6 +90,13 @@ public class ProfileScreen extends AppCompatActivity {
     }
 
     public void displayPosts(View view){
+        petstory_tab.setBackgroundResource(R.drawable.btn_pet_story);
+        petstory_tab.setTextColor(Color.parseColor("#1A94CB"));
+        pictures_tab.setBackgroundResource(R.drawable.btn_pictures);
+        pictures_tab.setTextColor(Color.parseColor("#1A94CB"));
+        posts_tab.setBackgroundResource(R.drawable.btn_posts_selected);
+        posts_tab.setTextColor(Color.parseColor("#FFFFFF"));
+
         fm = getSupportFragmentManager();
         ft = fm.beginTransaction();
         PostsFragment postsFragment=new PostsFragment();
@@ -157,13 +190,14 @@ public class ProfileScreen extends AppCompatActivity {
 
         boolean thisuser=true;
         Integer[] imageIDs = {
-                R.drawable.home,
-                R.drawable.like_big,
-                R.drawable.like_small,
-                R.drawable.my_profile,
-                R.drawable.plus_button_x,
-                R.drawable.users,
-                R.drawable.my_profile
+                R.drawable.testimage1,
+                R.drawable.testimage1,
+                R.drawable.testimage2,
+                R.drawable.testimage2,
+                R.drawable.testimage3,
+                R.drawable.testimage3,
+                R.drawable.testimage4,
+                R.drawable.testimage4
         };
 
         public PicturesFragment() { }
@@ -179,6 +213,19 @@ public class ProfileScreen extends AppCompatActivity {
             View rootView = inflater.inflate(R.layout.fragment_pictures, container, false);
 
             GridView gridView = (GridView) rootView.findViewById(R.id.gridview);
+            gridView.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    scrollView.requestDisallowInterceptTouchEvent(true);
+                    int action = event.getActionMasked();
+                    switch (action) {
+                        case MotionEvent.ACTION_UP:
+                            scrollView.requestDisallowInterceptTouchEvent(false);
+                            break;
+                    }
+                    return false;
+                }
+            });
             gridView.setAdapter(new ImageAdapter(this.getActivity()));
 
             return rootView;
@@ -213,9 +260,9 @@ public class ProfileScreen extends AppCompatActivity {
                 ImageView imageView;
                 if (convertView == null) {
                     imageView = new ImageView(context);
-                    imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
+                    imageView.setAdjustViewBounds(true);
                     imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                    imageView.setPadding(5, 5, 5, 5);
+                    imageView.setPadding(1, 1, 1, 1);
                 } else {
                     imageView = (ImageView) convertView;
                 }
@@ -248,12 +295,27 @@ public class ProfileScreen extends AppCompatActivity {
 
             adapter=new MainActivity.FeedAdapter(this.getActivity(),arrayOfFeeds);
 
-//            arrayOfFeeds.add(new MainActivity.Feed("Kirti Karande","2 hours ago","Such a cute ..... I dont know what to call it. ;)","208 Likes 300 Comments"));
-  //          arrayOfFeeds.add(new MainActivity.Feed("Kirti Karande","2 hours ago","Such a cute ..... I dont know what to call it. ;)","208 Likes 300 Comments"));
+            arrayOfFeeds.add(new MainActivity.Feed("Kirti Karande","2 hrs ago","Such a cute pet","480","587","87","92"));
+            arrayOfFeeds.add(new MainActivity.Feed("Kirti Karande","3 hrs ago","Such a cute pet","4","5","95","82"));
+            arrayOfFeeds.add(new MainActivity.Feed("Kirti Karande","3 hrs ago","Such a cute pet","4","5","95","82"));
+            arrayOfFeeds.add(new MainActivity.Feed("Kirti Karande","3 hrs ago","Such a cute pet","4","5","95","82"));
 
             list_users_feeds=(ListView)rootView.findViewById(R.id.list_user_feeds);
-            list_users_feeds.setAdapter(adapter);
 
+            list_users_feeds.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    scrollView.requestDisallowInterceptTouchEvent(true);
+                    int action = event.getActionMasked();
+                    switch (action) {
+                        case MotionEvent.ACTION_UP:
+                            scrollView.requestDisallowInterceptTouchEvent(false);
+                            break;
+                    }
+                    return false;
+                }
+            });
+            list_users_feeds.setAdapter(adapter);
             return rootView;
         }
     }

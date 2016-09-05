@@ -4,6 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/white"
     tools:context="com.startup.projectfinal.peyoye.ProfileScreen$PetStoryFragment">
     <FrameLayout    android:id="@+id/ifmyprofile"
         android:layout_width="match_parent"
@@ -40,6 +41,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="0.8"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="start|top"
                     android:background="@drawable/bg_edittext"
                     style="@style/PostDescriptionText"
                     android:minLines="5"
@@ -81,6 +83,7 @@
             <TextView   android:id="@+id/tv_others_petstorycontent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="top|start"
                 android:text="@string/pet_story_description"
                 android:background="@drawable/bg_edittext"
                 android:padding="10dp"
@@ -117,7 +120,7 @@
                 android:text="Like"
                 style="@style/text_view_1625D2B0760B4A8FA1CE29B0B77DED2F_style"
                 android:background="#00000000"
-                android:layout_margin="10dp"
+                android:layout_marginStart="10dp"
                 android:drawableStart="@drawable/like_big"/>
         </LinearLayout>
         </ScrollView>

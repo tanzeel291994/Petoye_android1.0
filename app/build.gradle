@@ -7,7 +7,7 @@ android {
     defaultConfig {
         applicationId "com.startup.projectfinal.peyoye"
         minSdkVersion 17
-        multiDexEnabled true
+        multiDexEnabled false
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
@@ -35,5 +35,6 @@ dependencies {
     compile 'com.android.support:multidex:1.0.1'
     compile 'com.google.android.gms:play-services-gcm:9.4.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha4'
+    compile 'com.github.siyamed:android-shape-imageview:0.9.+@aar'
     testCompile 'junit:junit:4.12'
 }
