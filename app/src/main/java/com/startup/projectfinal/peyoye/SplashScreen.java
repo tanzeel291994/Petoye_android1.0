@@ -1,9 +1,11 @@
 package com.startup.projectfinal.peyoye;
 
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.animation.BounceInterpolator;
 
 public class SplashScreen extends Activity {
 
@@ -34,10 +36,15 @@ public class SplashScreen extends Activity {
                         intent = new Intent(SplashScreen.this,MainActivity.class);
                     }
                     startActivity(intent);
+
                 }
             }
         };
-        timerThread.start();
+        timerThread.start();/*
+        ObjectAnimator moveAnim = ObjectAnimator.ofFloat(, "Y", 1000);
+        moveAnim.setDuration(2000);
+        moveAnim.setInterpolator(new BounceInterpolator());
+        moveAnim.start();*/
     }
 
     @Override

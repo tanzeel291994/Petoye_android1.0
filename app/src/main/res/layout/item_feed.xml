@@ -2,19 +2,25 @@
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white1"
-    android:padding="5dp" >
+    android:padding="5dp">
 
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <ImageView
+        <com.github.siyamed.shapeimageview.CircularImageView
+            android:id="@+id/img_user"
+            android:src="@drawable/com_facebook_profile_picture_blank_portrait"
+            android:scaleType="fitStart"
+            android:adjustViewBounds="true"
+            android:padding="1dp"
+            app:siSquare="true"
             android:layout_margin="2dp"
-            android:background="@color/timberwolf"
-            android:src="@drawable/com_facebook_profile_picture_blank_square"
             android:layout_weight="0.2"
             android:layout_width="0dp"
             android:layout_height="fill_parent" />
+
         <LinearLayout
             android:layout_margin="2dp"
             android:orientation="vertical"
@@ -56,10 +62,11 @@
         android:layout_width="match_parent"/>
     <ImageView
         android:id="@+id/feed_img"
-        android:src="@mipmap/ic_launcher"
-        android:scaleType="centerInside"
+        android:src="@drawable/testimage1"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_margin="5dp"
+        android:adjustViewBounds="true"
         />
     <TextView
         style="@style/text_view_576412407EF6433A888B7D7B0EA0A6D3_style"

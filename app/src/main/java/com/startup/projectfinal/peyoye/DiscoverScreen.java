@@ -67,6 +67,7 @@ public class DiscoverScreen extends Activity {
     }
     public void onClickMyProfileButton(View view){
         Intent i=new Intent(this, ProfileScreen.class);
+        i.putExtra("username","Kirti Karande");
         startActivity(i);
         finish();
     }

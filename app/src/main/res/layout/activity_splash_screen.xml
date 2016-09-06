@@ -4,22 +4,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:weightSum="1"
     android:background="@color/medium_turquoise"
     tools:context="com.startup.projectfinal.peyoye.SplashScreen">
     <Space
-        android:layout_weight="0.1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <ImageView
-        android:layout_weight="0.3"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/petoye_logo2"
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <Space
-        android:layout_weight="0.8"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        />
+        android:layout_weight="0.2"/>
+    <ImageView android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.2"
+        android:src="@drawable/petoye_logo"
+        android:layout_gravity="center_horizontal"
+        android:adjustViewBounds="true" />
 </LinearLayout>

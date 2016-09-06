@@ -1,34 +1,21 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
+
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="text_view_A9AAE4037A894B809681844998D44BE8_size">13.92sp</dimen>
-    <dimen name="text_view_576412407EF6433A888B7D7B0EA0A6D3_size">14.0sp</dimen>
-    <dimen name="text_view_1625D2B0760B4A8FA1CE29B0B77DED2F_size">18.0sp</dimen>
-    <dimen name="text_view_CAE50F27E5974FA393EA3BDC261647D0_size">27.84dp</dimen>
-    <dimen name="text_view_A0FAEDF79FE443E18D36E6895C728FC9_size">46.4dp</dimen>
-    <dimen name="text_view_942B68EBD83A430C8442B90E28E8BE6F_size">20.84dp</dimen>
-    <dimen name="text_view_8A64EBE0E29E4BF9B539AB355607F8E9_size">20.030464dp</dimen>
-    <dimen name="text_view_F335C6E089554FA887D4424F172861A8_size">20.48dp</dimen>
-    <dimen name="text_view_CEF821399EF043A69B1291DCFC061277_size">20.48dp</dimen>
-    <dimen name="text_view_E7B469B37F234AA99CE088DDEF9F888B_size">20.48dp</dimen>
-    <dimen name="text_view_26D7B73CA3994A6BBCDD13564FFC15D6_size">20.48dp</dimen>
-    <dimen name="text_view_F8E6230002AB49DBAA19EB2627C0E1DA_size">18.0sp</dimen>
-    <dimen name="text_view_C63846713CDD41F4BE0581ADC9AD7345_size">16.8sp</dimen>
-    <dimen name="text_view_41E46FA6584C495C9CBBCF3DD2ED17FB_size">20.52sp</dimen>
-    <dimen name="text_view_A444B11983E44DCCA3641B2B56512B3D_size">20.88sp</dimen>
-    <dimen name="text_view_827E62D5DAD843F9AA3DFD5935023428_size">18.0sp</dimen>
+
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
-    <dimen name="text_view_97C359870D95450A88B303D7F621BEA1_size">16.6sp</dimen>
-    <dimen name="text_view_D737D74870D24C318F03F99EAE0E4888_size">14.0sp</dimen>
-    <dimen name="text_view_CBC55B405CEE442394C7FC1F187C60FE_size">20.88sp</dimen>
-    <dimen name="text_view_1BCB2F10873D467C941F892D92765D13_size">20.0448sp</dimen>
-    <dimen name="text_view_DB1C44AEDDA8487EB1CD1BB20054838C_size">25.52sp</dimen>
-    <dimen name="text_view_DECC52319A214A34858B60A9155ECBAC_size">20.0sp</dimen>
-    <dimen name="text_view_5D0FA4EA4FA544C69B077C5EB75680D1_size">20.0sp</dimen>
-    <dimen name="text_view_2CBF0717FF594FE0910A46F407508655_size">20.0sp</dimen>
-    <dimen name="text_view_FEA83333C5424DE8BA52770FD27EDF41_size">24.4992sp</dimen>
+
+    <dimen name="text_view_CAE50F27E5974FA393EA3BDC261647D0_size">27.0dp</dimen>
+    <dimen name="text_view_A0FAEDF79FE443E18D36E6895C728FC9_size">46.0dp</dimen>
+    <dimen name="text_view_942B68EBD83A430C8442B90E28E8BE6F_size">20.0dp</dimen>
+
+    <dimen name="text_view_576412407EF6433A888B7D7B0EA0A6D3_size">14.0sp</dimen>
+    <dimen name="text_view_C63846713CDD41F4BE0581ADC9AD7345_size">16.0sp</dimen>
+    <dimen name="text_view_1625D2B0760B4A8FA1CE29B0B77DED2F_size">18.0sp</dimen>
+    <dimen name="text_view_41E46FA6584C495C9CBBCF3DD2ED17FB_size">20.0sp</dimen>
+    <dimen name="text_view_DB1C44AEDDA8487EB1CD1BB20054838C_size">25.0sp</dimen>
 
 
 </resources>

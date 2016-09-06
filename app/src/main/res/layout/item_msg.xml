@@ -4,7 +4,6 @@
     android:layout_height="wrap_content"
     android:padding="10dp"
     >
-
     <TextView
         android:layout_centerHorizontal="true"
         android:text="Hey !!"

@@ -1,33 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_launch_screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/medium_turquoise"
+    android:weightSum="1"
     tools:context="com.startup.projectfinal.peyoye.LaunchScreen">
-
-    <Space
-        android:layout_weight="0.1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <ImageView
-        android:layout_weight="0.3"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/petoye_logo2"
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1"
+        android:background="@color/medium_turquoise"    >
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"/>
+        <ImageView android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:src="@drawable/petoye_logo"
+            android:layout_gravity="center_horizontal"
+            android:adjustViewBounds="true" />
+    </LinearLayout>
+
+    <LinearLayout   android:id="@id/footer"
+        android:layout_alignParentBottom="true"
         android:gravity="bottom"
         android:orientation="vertical"
-        android:layout_weight="0.8"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="wrap_content">
         <Button
             style="@style/text_view_942B68EBD83A430C8442B90E28E8BE6F_style"
             android:layout_width="match_parent"
@@ -36,19 +39,17 @@
             android:id="@+id/btnGotoCreateAccount"
             android:background="@color/medium_turquoise2"
             android:textColor="@color/white"
-            android:textSize="25dp"
             android:onClick="gotoCreateAccountScreen"
             />
         <Button
-            style="@style/text_view_CAE50F27E5974FA393EA3BDC261647D0_style"
+            style="@style/text_view_942B68EBD83A430C8442B90E28E8BE6F_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Login"
             android:id="@+id/btnGotoLogin"
             android:background="@color/verdigris"
             android:textColor="@color/white"
-            android:textSize="25dp"
             android:onClick="gotoLoginScreen"
             />
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

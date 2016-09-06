@@ -9,7 +9,6 @@ import android.widget.Button;
 
 public class LaunchScreen extends Activity {
 
-
     Button btnGotoLogin,btnGotoCreateAccount;
 
     @Override

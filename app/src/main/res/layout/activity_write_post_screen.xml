@@ -25,7 +25,8 @@
             android:src="@drawable/back"
             android:onClick="goBack"/>
         <TextView
-            style="@style/text_view_8A64EBE0E29E4BF9B539AB355607F8E9_style"
+            style="@style/text_view_DB1C44AEDDA8487EB1CD1BB20054838C_style"
+            android:textColor="@color/white"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Share a post"
@@ -150,7 +151,8 @@
                 android:layout_margin="10dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:src="@drawable/share_gray" />
+                android:src="@drawable/share_gray"
+                android:onClick="share"/>
         </RelativeLayout>
         <View
             android:background="@color/manatee"

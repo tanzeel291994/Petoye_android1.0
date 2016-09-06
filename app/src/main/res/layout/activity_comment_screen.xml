@@ -24,15 +24,15 @@
             android:src="@drawable/back"
             android:onClick="goBack"/>
         <TextView
-            style="@style/text_view_8A64EBE0E29E4BF9B539AB355607F8E9_style"
+            style="@style/text_view_F335C6E089554FA887D4424F172861A8_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Comments"
+            android:textColor="@color/white"
             android:layout_weight="0.9"
             android:textAlignment="center"
             android:paddingBottom="20dp"
-            android:paddingTop="20dp"
-            />
+            android:paddingTop="20dp"   />
     </TableRow>
     <TableRow
         android:layout_width="match_parent"

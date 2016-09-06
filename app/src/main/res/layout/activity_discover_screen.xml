@@ -26,10 +26,11 @@
             android:src="@drawable/back"
             android:onClick="goBack"/>
         <TextView
-            style="@style/text_view_8A64EBE0E29E4BF9B539AB355607F8E9_style"
+            style="@style/text_view_DB1C44AEDDA8487EB1CD1BB20054838C_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Discover"
+            android:textColor="@color/white"
             android:layout_weight="0.9"
             android:textAlignment="center"
             android:paddingBottom="20dp"

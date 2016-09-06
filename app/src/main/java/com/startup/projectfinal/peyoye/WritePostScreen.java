@@ -9,6 +9,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -38,6 +40,7 @@ public class WritePostScreen extends AppCompatActivity {
     EditText postcontent;
     ImageView img_user,feed_img;
     private Bitmap bitmap;
+    ImageButton btngoogleplus,btnfb,btntwitter,btn_Share,btninsta;
 
     private int PICK_IMAGE_REQUEST = 1;
     @Override
@@ -49,69 +52,32 @@ public class WritePostScreen extends AppCompatActivity {
         container.setVisibility(View.GONE);
 
         postcontent=(EditText)findViewById(R.id.post_content);
+        TextWatcher textWatcher=new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void afterTextChanged(Editable editable) {  enableDisableButtons();   }
+        };
+        postcontent.addTextChangedListener(textWatcher);
 
         img_user=(ImageView)findViewById(R.id.img_user);
 
         feed_img=(ImageView)findViewById(R.id.feed_img);
 
-        final ImageButton btngoogleplus=(ImageButton)findViewById(R.id.btngoogleplus);
-        btngoogleplus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //for colored google plus button
-                btngoogleplus.setImageResource(R.drawable.google_plus_color);
-                //for grey google plus button
-                btngoogleplus.setImageResource(R.drawable.google_plus_gray);
-            }
-        });
-
-        final ImageButton btnfb=(ImageButton)findViewById(R.id.btnfb);
-        btnfb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //for colored fb button
-                btnfb.setImageResource(R.drawable.fb_color);
-                //for grey fb button
-                btnfb.setImageResource(R.drawable.fb_gray);
-            }
-        });
-
-        final ImageButton btntwitter=(ImageButton)findViewById(R.id.btntwitter);
-        btntwitter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //for colored twitter button
-                btntwitter.setImageResource(R.drawable.twitter_color);
-                //for gray twitter button
-                btntwitter.setImageResource(R.drawable.twitter_gray);
-            }
-        });
-        final ImageButton btninsta=(ImageButton)findViewById(R.id.btninsta);
-        btninsta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //for colored insta button
-                btninsta.setImageResource(R.drawable.insta_color);
-                //for gray insta button
-                btninsta.setImageResource(R.drawable.insta_gray);
-            }
-        });
-
-        final ImageButton btn_Share=(ImageButton)findViewById(R.id.btn_Share);
-        btn_Share.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //for colored Share button
-                btn_Share.setImageResource(R.drawable.share_color_button);
-                //for grey Share button
-                btn_Share.setImageResource(R.drawable.share_gray);
-            }
-        });
+        btn_Share=(ImageButton)findViewById(R.id.btn_Share);
+        btngoogleplus=(ImageButton)findViewById(R.id.btngoogleplus);
+        btnfb=(ImageButton)findViewById(R.id.btnfb);
+        btntwitter=(ImageButton)findViewById(R.id.btntwitter);
+        btninsta=(ImageButton)findViewById(R.id.btninsta);
+        enableDisableButtons();
     }
 
     public void goBack(View view){
         finish();
     }
+
     public void share(View view)
     {
         final ProgressDialog loading = ProgressDialog.show(this,"Uploading...","Please wait...",false,false);
@@ -124,13 +90,10 @@ public class WritePostScreen extends AppCompatActivity {
         Log.i("TAG", jsonParams.toString());
         JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(jsonParams),
                 new Response.Listener<JSONObject>() {
-
                     @Override
                     public void onResponse(JSONObject response) {
                         //store the user id in global variable
                         Log.i("TAG", response.toString());
-
-
                     }
                 },
                 new Response.ErrorListener() {
@@ -139,7 +102,6 @@ public class WritePostScreen extends AppCompatActivity {
                         NetworkResponse networkResponse = error.networkResponse;
                         if (networkResponse != null && networkResponse.statusCode == 422) {
                             Log.i("TAG", networkResponse.headers.toString());
-
                         }
                     }
                 }) {
@@ -150,13 +112,9 @@ public class WritePostScreen extends AppCompatActivity {
                 //  headers.put("User-agent", "My useragent");
                 return headers;
             }
-
         };
-
         MySingleton.getInstance(this).addToRequestQueue(jsObjRequest);
     }
-
-
 
     public String getStringImage(Bitmap bmp){
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -178,12 +136,12 @@ public class WritePostScreen extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         container.setVisibility(View.VISIBLE);
-
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             Uri filePath = data.getData();
             try {
                 //Getting the Bitmap from Gallery
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                /*
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.WRAP_CONTENT,
                         LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -191,10 +149,12 @@ public class WritePostScreen extends AppCompatActivity {
                 ImageView imageView = new ImageView(this); //context is the activity context say, this
                 imageView.setLayoutParams(lp);
                 //imgl.DisplayImage(image.getUrl(), imageView);
-                container.addView(imageView);
-                imageView.setImageBitmap(bitmap);
+                container.addView(imageView);*/
+                feed_img.setImageBitmap(bitmap);
+                enableDisableButtons();
             } catch (IOException e) {
                 e.printStackTrace();
+                container.setVisibility(View.GONE);
             }
         }
     }
@@ -204,5 +164,47 @@ public class WritePostScreen extends AppCompatActivity {
         feed_img.setImageDrawable(null);
         feed_img.setImageResource(0);
         container.setVisibility(View.GONE);
+        enableDisableButtons();
+    }
+
+    void enableDisableButtons()
+    {
+        //to disable buttons
+        if(postcontent.getText().toString().equals("") && container.getVisibility()==View.GONE)
+        {
+            //for grey google plus button
+            btngoogleplus.setImageResource(R.drawable.google_plus_gray);
+            btngoogleplus.setClickable(false);
+            //for grey fb button
+            btnfb.setImageResource(R.drawable.fb_gray);
+            btnfb.setClickable(false);
+            //for gray twitter button
+            btntwitter.setImageResource(R.drawable.twitter_gray);
+            btntwitter.setClickable(false);
+            //for gray insta button
+            btninsta.setImageResource(R.drawable.insta_gray);
+            btninsta.setClickable(false);
+            //for gray Share button
+            btn_Share.setImageResource(R.drawable.share_gray);
+            btn_Share.setClickable(false);
+        }
+        else    // to enable buttons
+        {
+            //for grey google plus button
+            btngoogleplus.setImageResource(R.drawable.google_plus_color);
+            btngoogleplus.setClickable(true);
+            //for grey fb button
+            btnfb.setImageResource(R.drawable.fb_color);
+            btnfb.setClickable(true);
+            //for gray twitter button
+            btntwitter.setImageResource(R.drawable.twitter_color);
+            btntwitter.setClickable(true);
+            //for gray insta button
+            btninsta.setImageResource(R.drawable.insta_color);
+            btninsta.setClickable(true);
+            //for gray Share button
+            btn_Share.setImageResource(R.drawable.share_color_button);
+            btn_Share.setClickable(true);
+        }
     }
 }
