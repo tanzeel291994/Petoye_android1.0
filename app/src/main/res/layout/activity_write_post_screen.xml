@@ -107,25 +107,25 @@
                 android:layout_height="wrap_content"
                 android:background="#00000000"
                 android:layout_marginStart="5dp"
-                android:src="@drawable/google_plus_gray"/>
+                android:src="@drawable/google_plus_button_disabled"/>
             <ImageButton    android:id="@+id/btnfb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#00000000"
                 android:layout_marginStart="5dp"
-                android:src="@drawable/fb_gray" />
+                android:src="@drawable/fb_button_disabled" />
             <ImageButton    android:id="@+id/btntwitter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#00000000"
                 android:layout_marginStart="5dp"
-                android:src="@drawable/twitter_gray" />
+                android:src="@drawable/twitter_button_disabled" />
             <ImageButton    android:id="@+id/btninsta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#00000000"
                 android:layout_marginStart="5dp"
-                android:src="@drawable/insta_gray"/>
+                android:src="@drawable/insta_button_disabled"/>
         </LinearLayout>
         <View
             android:background="@color/manatee"
@@ -151,7 +151,7 @@
                 android:layout_margin="10dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:src="@drawable/share_gray"
+                android:src="@drawable/share_button_disabled"
                 android:onClick="share"/>
         </RelativeLayout>
         <View

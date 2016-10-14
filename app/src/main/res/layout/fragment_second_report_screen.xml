@@ -51,11 +51,9 @@
     <Button
         android:id="@+id/report_button"
         style="@style/text_view_97C359870D95450A88B303D7F621BEA1_style"
-        android:text="Report"
         android:textColor="@color/white"
-        android:background="@drawable/report_button_background"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_width="match_parent"
+        android:background="@drawable/report_red"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 </LinearLayout>

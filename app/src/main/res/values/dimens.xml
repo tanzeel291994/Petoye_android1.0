@@ -7,6 +7,12 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
 
+    <dimen name="textsize_screenname">20dp</dimen>
+    <dimen name="textsize_h1">18dp</dimen>
+    <dimen name="textsize_h2">16dp</dimen>
+    <dimen name="textsize_h3">14dp</dimen>
+    <dimen name="textsize_content">12dp</dimen>
+
     <dimen name="text_view_CAE50F27E5974FA393EA3BDC261647D0_size">27.0dp</dimen>
     <dimen name="text_view_A0FAEDF79FE443E18D36E6895C728FC9_size">46.0dp</dimen>
     <dimen name="text_view_942B68EBD83A430C8442B90E28E8BE6F_size">20.0dp</dimen>

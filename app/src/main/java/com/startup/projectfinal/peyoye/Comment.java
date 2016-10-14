@@ -9,8 +9,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-
-
 public class Comment {
     Image img_user;
     String comment_username, comment_msg;

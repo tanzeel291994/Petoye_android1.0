@@ -368,16 +368,11 @@ public class LetterboxScreen extends AppCompatActivity {
                             //  headers.put("User-agent", "My useragent");
                             return headers;
                         }
-
                     };
                     // Access the RequestQueue through your singleton class.
-
                     MySingleton.getInstance(thisActivityContext).addToRequestQueue(jsObjRequest);
-
-
                 } catch (Exception e) {
                 }
-
                 return null;
             }
 
@@ -385,11 +380,7 @@ public class LetterboxScreen extends AppCompatActivity {
             protected void onPostExecute(Void result) {
                 super.onPostExecute(result);
                 Log.i("TAG", "in....");
-
-
             }
         }
-
-
     }
 }

@@ -51,7 +51,7 @@
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/home"
+            android:src="@drawable/home_enabled"
             android:layout_gravity="center"
             android:layout_weight="0.2"
             android:background="@color/white"
@@ -62,7 +62,7 @@
             android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:layout_weight="0.2"
-            android:src="@drawable/users"
+            android:src="@drawable/users_disabled"
             android:background="@color/white"
             android:onClick="onClickAddFriendsButton" />
 
@@ -80,7 +80,7 @@
             android:layout_weight="0.2"
             android:layout_gravity="center"
             android:layout_height="wrap_content"
-            android:src="@drawable/notif"
+            android:src="@drawable/notif_disabled"
             android:background="@color/white"
             android:onClick="onClickNotificationButton"/>
 
@@ -89,7 +89,7 @@
             android:layout_gravity="center"
             android:layout_weight="0.2"
             android:layout_height="wrap_content"
-            android:src="@drawable/my_profile"
+            android:src="@drawable/my_profile_disabled"
             android:background="@color/white"
             android:onClick="onClickMyProfileButton" />
     </LinearLayout>

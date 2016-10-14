@@ -173,37 +173,37 @@ public class WritePostScreen extends AppCompatActivity {
         if(postcontent.getText().toString().equals("") && container.getVisibility()==View.GONE)
         {
             //for grey google plus button
-            btngoogleplus.setImageResource(R.drawable.google_plus_gray);
+            btngoogleplus.setImageResource(R.drawable.google_plus_button_disabled);
             btngoogleplus.setClickable(false);
             //for grey fb button
-            btnfb.setImageResource(R.drawable.fb_gray);
+            btnfb.setImageResource(R.drawable.fb_button_disabled);
             btnfb.setClickable(false);
             //for gray twitter button
-            btntwitter.setImageResource(R.drawable.twitter_gray);
+            btntwitter.setImageResource(R.drawable.twitter_button_disabled);
             btntwitter.setClickable(false);
             //for gray insta button
-            btninsta.setImageResource(R.drawable.insta_gray);
+            btninsta.setImageResource(R.drawable.insta_button_disabled);
             btninsta.setClickable(false);
             //for gray Share button
-            btn_Share.setImageResource(R.drawable.share_gray);
+            btn_Share.setImageResource(R.drawable.share_button_disabled);
             btn_Share.setClickable(false);
         }
         else    // to enable buttons
         {
             //for grey google plus button
-            btngoogleplus.setImageResource(R.drawable.google_plus_color);
+            btngoogleplus.setImageResource(R.drawable.google_plus_button_enabled);
             btngoogleplus.setClickable(true);
             //for grey fb button
-            btnfb.setImageResource(R.drawable.fb_color);
+            btnfb.setImageResource(R.drawable.fb_button_enabled);
             btnfb.setClickable(true);
             //for gray twitter button
-            btntwitter.setImageResource(R.drawable.twitter_color);
+            btntwitter.setImageResource(R.drawable.twitter_button_enabled);
             btntwitter.setClickable(true);
             //for gray insta button
-            btninsta.setImageResource(R.drawable.insta_color);
+            btninsta.setImageResource(R.drawable.insta_button_enabled);
             btninsta.setClickable(true);
             //for gray Share button
-            btn_Share.setImageResource(R.drawable.share_color_button);
+            btn_Share.setImageResource(R.drawable.share_button_enabled);
             btn_Share.setClickable(true);
         }
     }

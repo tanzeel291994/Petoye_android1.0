@@ -8,7 +8,7 @@
     <ImageView
         android:id="@+id/img_user"
         android:layout_margin="5dp"
-        android:src="@drawable/users"
+        android:src="@drawable/users_enabled"
         android:layout_width="0dp"
         android:layout_gravity="center_vertical"
         android:layout_weight="0.2"

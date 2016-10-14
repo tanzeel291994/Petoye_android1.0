@@ -11,8 +11,6 @@ import android.widget.VideoView;
 
 import java.util.ArrayList;
 
-
-
 public class CommentAdapter extends ArrayAdapter<Comment> {
 
     // View lookup cache

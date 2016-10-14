@@ -3,7 +3,20 @@
   <component name="assetNames">
     <option name="mapping">
       <map>
-        <entry key="plus_button" value="plus_button_x" />
+        <entry key="fb_button" value="fb_button_disabled" />
+        <entry key="forgot_pass" value="forgot_password" />
+        <entry key="google_button" value="google_button_disabled" />
+        <entry key="home" value="home_disabled" />
+        <entry key="insta_button" value="insta_button_disabled" />
+        <entry key="like_big" value="like_big_disabled" />
+        <entry key="login_fb" value="login_with_fb" />
+        <entry key="my_profile" value="my_profile_enabled" />
+        <entry key="notif" value="notif_enabled" />
+        <entry key="plus_button" value="plus_button_rotated" />
+        <entry key="rectangle" value="bg_rectangle" />
+        <entry key="share_button" value="share_button_disabled" />
+        <entry key="share_via" value="share_via_enabled" />
+        <entry key="twitter_button" value="twitter_button_disabled" />
       </map>
     </option>
   </component>

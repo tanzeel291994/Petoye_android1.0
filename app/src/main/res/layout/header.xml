@@ -9,22 +9,22 @@
 
     <ImageButton
         android:id="@+id/btnHamburger"
-        android:layout_width="0dp"
-        android:layout_weight="0.1"
-        android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:src="@drawable/ham_button"
         android:background="@color/medium_turquoise"
-        android:layout_margin="10dp"
-        android:onClick="openHamburgerMenu" />
+        android:layout_margin="5dp"
+        android:onClick="openHamburgerMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <ImageView
-        android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
         android:layout_gravity="center_vertical"
         android:layout_weight="0.8"
         android:src="@drawable/petoyename"
         android:layout_margin="10dp"       />
+
 
     <ImageButton
         android:id="@+id/search_button"
